@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>客户管理</title>
+    <link href="../Css/Main.css" rel="stylesheet" />
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="center" style="width: 1000px">
+        <script>commonPageJsMng.initHeaderMenu();</script>
+
+        <div class="body">
+            <div>
+                <div class="condition">
+                    <div>
+                        <span class="lable">车主姓名</span>
+                        <input type="text" id="txtCustomerName" class="text" style="width:150px" />
+                    </div>
+                    <div>
+                        <span class="lable">手机</span>
+                        <input type="text" id="txtMobilePhone" class="text" style="width:150px" />
+                    </div>
+                    <div>
+                        <span class="lable">客户类型</span>
+                        <select id="selCustomType">
+                            <option value="-1">所有</option>
+                            <option value="1">正式客户</option>
+                            <option value="0">潜在客户</option>
+                        </select>
+                    </div>
+                    <div >
+                        <input class="button" type="button" value="查  询" style="width:120px" id="btnSearch" />
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div style="float:right;">
+                    <input class="button" type="button" value="新  增" style="width:120px" id="btnNew" />
+                    <!--<input class="button" type="button" value="发送短信" style="width:120px" id="btnSendSMS" />-->
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="list">
+                <table>
+                    <tr>
+                        <th width="50px">选择</th>
+                        <th width="100px">客户类型</th>
+                        <th width="100px">车主姓名</th>
+                        <th>手机</th>
+                        <th>生日</th>
+                        <th>品牌</th>
+                        <th>车型</th>
+                        <th style="width:100px">操作</th>
+                    </tr>
+                    <tbody id="mfCustomerList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>commonPageJsMng.initFooter();</script>
+    </div>
+
+    <script>
+        var mfCustomerMngJsMng = mfCustomerMngJsMng || {
+            init: function () {
+                $("#btnSearch").click(function () {
+                    mfCustomerMngJsMng.loadDataList();
+                });
+                $("#btnNew").click(function () {
+                    mfCustomerMngJsMng.newCustomer();
+                });
+                $("#btnSendSMS").click(function () {
+                    mfCustomerMngJsMng.sendSMS();
+                });
+            },
+            loadDataList: function () {
+                var cName = $("#txtCustomerName").val();
+                var cMobile = $("#txtMobilePhone").val();
+                var cType = $("#selCustomType").val();
+                $("#mfCustomerList").empty();
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        CName: cName,
+                        CMobile: cMobile,
+                        CType: cType,
+                    },
+                    postUrl: "/Auth/Auth.svc/GetMFCustomerList",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (msg.IsSuccess) {
+                                var _dataList = jQuery.parseJSON(msg.Message);
+                                if (typeof (_dataList) != "undefined" && _dataList.length > 0) {
+                                    $.each(_dataList, function (i, item) {
+                                        var trTemp = $.template.render(mfCustomerMngJsMng.template.tr,
+                                             {
+                                                 MFCustomerId: item.MFCustomerId, StateText: item.StateText,
+                                                 CustormerName: item.CustormerName, MobileNoText: item.MobileNoText,
+                                                 BirthDayText: item.BirthDayText, CarBrand: item.CarBrand,
+                                                 CarType: item.CarType
+                                             })
+                                        $("#mfCustomerList").append(trTemp);
+                                    });
+                                }
+                            }
+                            else {
+                                if (msg.Code == -1000) {
+                                    alert(msg.Message);
+                                    location.href = "../MaintainFactory/Login.html";
+                                }
+                                else
+                                    alert(msg.Message);
+                            }
+                        }
+                    }
+                });
+            },
+            newCustomer: function () {
+                location.href = "CustomerEdit.html";
+            },
+            modify: function (cId) {
+                location.href = "CustomerEdit.html?opType=1&cId=" + cId;
+            },
+            showDetail: function (cId) {
+                location.href = "CustomerDetail.html?cId=" + cId;
+            },
+            sendSMSGroup: function () {
+
+            },
+            sendSMSSingle: function (cId) {
+                location.href = "SendCustSMS.html?cId=" + cId;
+            },
+            newMaintain: function (cId) {
+                location.href = "MaintainEdit.html?cId=" + cId;
+            },
+            newReserve: function (cId) {
+                location.href = "ReserveEdit.html?cId=" + cId;
+            },
+            template: {
+                tr: '<tr>\
+                        <td><input type="checkbox" value="${MFCustomerId}" /></td>\
+                        <td>${StateText}</td>\
+                        <td>${CustormerName}</td>\
+                        <td>${MobileNoText}</td>\
+                        <td>${BirthDayText}</td>\
+                        <td>${CarBrand}</td>\
+                        <td>${CarType}</td>\
+                        <td>\
+                            <a href="javascript:void(0);" onclick="mfCustomerMngJsMng.modify(${MFCustomerId});">修改</a>\
+                            <a href="javascript:void(0);" onclick="mfCustomerMngJsMng.sendSMSSingle(${MFCustomerId});">发送短信</a>\
+                            <a href="javascript:void(0);" onclick="mfCustomerMngJsMng.showDetail(${MFCustomerId});">查看</a>\
+                            <a href="javascript:void(0);" onclick="mfCustomerMngJsMng.newMaintain(${MFCustomerId});">新增提醒</a>\
+                            <a href="javascript:void(0);" onclick="mfCustomerMngJsMng.newReserve(${MFCustomerId});">新增预约</a>\
+                        </td>\
+                    </tr>'
+            }
+        };
+        mfCustomerMngJsMng.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyalFilial.App", "LoyalFilial.App\LoyalFilial.App.csproj", "{0239A4FC-4213-4E6F-930C-0AE065817055}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyalFilial.Entity", "LoyalFilial.Entity\LoyalFilial.Entity.csproj", "{35E5151A-BE93-4D2D-9B08-204F156E9A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyalFilial.BL", "LoyalFilial.BL\LoyalFilial.BL.csproj", "{0E427989-7564-48AD-A0CD-7F0B14262C9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyalFilial.DA", "LoyalFilial.DA\LoyalFilial.DA.csproj", "{B6EA7952-7113-42D7-A0EF-87879351BB47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyalFilial.Web", "LoyalFilial.Web\LoyalFilial.Web.csproj", "{0F4C05E1-25DC-4561-9756-3DB60515F970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyalFilial.APIService", "LoyalFilial.API\LoyalFilial.APIService.csproj", "{B5802E02-7854-4196-A5B4-74A52AEB0982}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyalFilial.Common", "LoyalFilial.Common\LoyalFilial.Common.csproj", "{7133EC90-175A-4243-9C48-40EFDEB84B8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyalFilial.BizCommon", "LoyalFilial.BizCommon\LoyalFilial.BizCommon.csproj", "{9673E69C-8DCC-459A-896E-B1A6995C8ACE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0239A4FC-4213-4E6F-930C-0AE065817055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0239A4FC-4213-4E6F-930C-0AE065817055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0239A4FC-4213-4E6F-930C-0AE065817055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0239A4FC-4213-4E6F-930C-0AE065817055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E5151A-BE93-4D2D-9B08-204F156E9A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E5151A-BE93-4D2D-9B08-204F156E9A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E5151A-BE93-4D2D-9B08-204F156E9A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E5151A-BE93-4D2D-9B08-204F156E9A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E427989-7564-48AD-A0CD-7F0B14262C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E427989-7564-48AD-A0CD-7F0B14262C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E427989-7564-48AD-A0CD-7F0B14262C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E427989-7564-48AD-A0CD-7F0B14262C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6EA7952-7113-42D7-A0EF-87879351BB47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6EA7952-7113-42D7-A0EF-87879351BB47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6EA7952-7113-42D7-A0EF-87879351BB47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6EA7952-7113-42D7-A0EF-87879351BB47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F4C05E1-25DC-4561-9756-3DB60515F970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4C05E1-25DC-4561-9756-3DB60515F970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4C05E1-25DC-4561-9756-3DB60515F970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4C05E1-25DC-4561-9756-3DB60515F970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5802E02-7854-4196-A5B4-74A52AEB0982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5802E02-7854-4196-A5B4-74A52AEB0982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5802E02-7854-4196-A5B4-74A52AEB0982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5802E02-7854-4196-A5B4-74A52AEB0982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7133EC90-175A-4243-9C48-40EFDEB84B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7133EC90-175A-4243-9C48-40EFDEB84B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7133EC90-175A-4243-9C48-40EFDEB84B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7133EC90-175A-4243-9C48-40EFDEB84B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9673E69C-8DCC-459A-896E-B1A6995C8ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9673E69C-8DCC-459A-896E-B1A6995C8ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9673E69C-8DCC-459A-896E-B1A6995C8ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9673E69C-8DCC-459A-896E-B1A6995C8ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

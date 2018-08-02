@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>报价管理</title>
+    <link href="../Css/Main.css" rel="stylesheet" />
+    <link href="../Css/PopUp.css" rel="stylesheet" />
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="center" style="width: 1000px">
+        <script>commonPageJsMng.initHeaderMenu();</script>
+
+        <div class="body">
+            <div>
+                <div class="condition">
+                    <div>
+                        <span class="lable">客户询价单号</span>
+                        <input type="text" id="txtInquiryId" class="text" style="width:150px" />
+                    </div>
+                    <div>
+                        <span class="lable">状态</span>
+                        <select id="selState">
+                            <option value="-99">所有</option>
+                            <option value="0" selected="selected">未报价</option>
+                            <option value="1">已报价</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="lable">报价日期</span>
+                        <input type="text" id="txtQuotationDateStart" class="text" style="width:150px" onclick="WdatePicker()" />
+                        <span style="width:20px">--</span>
+                        <input type="text" id="txtQuotationDateEnd" class="text" style="width:150px" onclick="WdatePicker()" />
+                    </div>
+
+                    <div>
+                        <span class="lable">配件名称</span>
+                        <input type="text" id="txtPartsName" class="text" style="width:150px" />
+                    </div>
+                    <div>
+                        <input class="button" type="button" value="查  询" style="width:120px" id="btnSearch" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="list">
+                <table>
+                    <tr>
+                        <th width="100px">客户询价单号</th>
+                        <th width="80px">询价日期</th>
+                        <th width="100px">计划交货日期</th>
+                        <th>品牌</th>
+                        <th>车型</th>
+                        <th>配件名称</th>
+                        <th>数量</th>
+                        <th>描述</th>
+                        <th>状态</th>
+                        <th width="80px">已报价条数</th>
+                        <th width="80px">报价(单价)</th>
+                        <th style="width:100px">操作</th>
+                    </tr>
+                    <tbody id="quotationList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>commonPageJsMng.initFooter();</script>
+    </div>
+
+    <!--popup  start-->
+    <div class="pop_main">
+        <!--<a href="javascript:$.showPopup();">点击这里查看效果</a>-->
+        <div class="pop_fullbg"></div>
+        <div class="pop_dialog">
+            <p class="pop_close"><a href="#">关闭</a></p>
+            <div><!--content--></div>
+        </div>
+    </div>
+    <!--end-->
+
+    <script type="text/javascript" src="../JS/Ctrl/DatePicker/WdatePicker.js"></script> 
+    <script>
+        var quotationMngJsMng = quotationMngJsMng || {
+            init: function () {
+                //var curDate = new Date(),
+                //    curMonth = (curDate.getMonth() + 1),
+                //    curMonthStr = curMonth > 9 ?curMonth:"0"+curMonth,
+                //    curDay = curDate.getDate(),
+                //    curDayStr = curDay > 9 ?curDay:"0"+curDay;
+
+                //var sDate = curDate.getFullYear() + "-" + curMonthStr + "-01",
+                //    eDate = curDate.getFullYear() + "-" + curMonthStr + "-" + curDayStr;
+                //$("#txtQuotationDateStart").val(sDate);
+                //$("#txtQuotationDateEnd").val(eDate);
+
+                $("#btnSearch").click(function () {
+                    quotationMngJsMng.loadDataList();
+                });
+            },
+            loadDataList: function () {
+                $("#quotationList").empty();
+                var inqId = 0;
+                if ($("#txtInquiryId").val() != "")
+                    inqId = parseInt($("#txtInquiryId").val());
+
+                var jsonQuery = '{"InquiryId":"' + inqId + '","State":"' + $("#selState").val()
+                    + '","PartsName":"' + $("#txtPartsName").val() + '"';
+                if ($("#txtQuotationDateStart").val() != "") {
+                    jsonQuery += ',"QuoteStartDate":"' + $("#txtQuotationDateStart").val() + '"';
+                }
+                if ($("#txtQuotationDateEnd").val() != "") {
+                    jsonQuery += ',"QuoteEndDate":"' + $("#txtQuotationDateEnd").val() + '"';
+                }
+                jsonQuery += "}";
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        QueryRequest: jsonQuery
+                    },
+                    postUrl: "/Auth/Auth.svc/GetQuotationList",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (msg.IsSuccess) {
+                                var _dataList = jQuery.parseJSON(msg.Message);
+                                if (typeof (_dataList) != "undefined" && _dataList.length > 0) {
+                                    $.each(_dataList, function (i, item) {
+                                        var display = (item.InquiryState == 2) ? "display:none" : "";
+                                        var trTemp = $.template.render(quotationMngJsMng.template.tr,
+                                             {
+                                                 InquiryId: item.InquiryId, InquiryDate: item.InquiryDateText,
+                                                 CarBrand: item.CarBrand, CarType: item.CarType, PlanDeliveryDate: item.PlanDeliveryDateText,
+                                                 PartsName: item.PartsName, Quantity: item.Quantity, StateText: item.InquiryStateText,
+                                                 Remark: item.Remark, QuotationCount: item.QuotationCount, Price: item.Price,
+                                                 Display: display
+                                             })
+                                        $("#quotationList").append(trTemp);
+                                    });
+                                }
+                            }
+                            else {
+                                if (msg.Code == -1000) {
+                                    alert(msg.Message);
+                                    location.href = "../MaintainFactory/Login.html";
+                                }
+                                else
+                                    alert(msg.Message);
+                            }
+                        }
+                    }
+                });
+            },
+            quote: function (inqId, obj) {
+                var price = $(obj).closest("tr").find("[name='QuotationPrice']").val();
+                var quantity = $(obj).closest("tr").find("[name='Quantity']").html();
+                var partsName = $(obj).closest("tr").find("[name='PartsName']").html();
+                     
+                if (price == "" || parseFloat(price) <= 0) {
+                    alert("请输入正确的报价！");
+                    return;
+                }
+                if (inqId <= 0) {
+                    alert("询价单号不存在！");
+                    return;
+                }
+                var jsonSave = '{"InquiryId":"' + inqId + '","Price":"' + price + '","Quantity":"' + quantity + '","PartsName":"' + partsName + '"}';
+
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        saveRequest: jsonSave
+                    },
+                    postUrl: "/Auth/Auth.svc/SaveQuotation",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (!msg.IsSuccess)
+                                alert("保存失败！");
+                            else {
+                                alert("保存成功！");
+                            }
+                        }
+                        else
+                            alert("保存失败！");
+                    }
+                });
+            },
+            template: {
+                tr: '<tr>\
+                        <td>${InquiryId}</td>\
+                        <td>${InquiryDate}</td>\
+                        <td>${PlanDeliveryDate}</td>\
+                        <td>${CarBrand}</td>\
+                        <td>${CarType}</td>\
+                        <td name="PartsName">${PartsName}</td>\
+                        <td name="Quantity">${Quantity}</td>\
+                        <td>${Remark}</td>\
+                        <td>${StateText}</td>\
+                        <td>${QuotationCount}</td>\
+                        <td><input type="text" name="QuotationPrice" class="text" style="width:80px" value="${Price}" /></td>\
+                        <td>\
+                            <a href="javascript:void(0);" style="${Display}" onclick="quotationMngJsMng.quote(${InquiryId},this);">报价</a>\
+                        </td>\
+                    </tr>'
+            }
+        };
+        quotationMngJsMng.init();
+    </script>
+</body>
+</html>

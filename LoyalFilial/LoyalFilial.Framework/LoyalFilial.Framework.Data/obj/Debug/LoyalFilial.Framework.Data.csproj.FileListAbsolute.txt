@@ -1,0 +1,7 @@
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data\bin\Debug\LoyalFilial.Framework.Data.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data\bin\Debug\LoyalFilial.Framework.Data.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data\bin\Debug\LoyalFilial.Framework.Core.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data\bin\Debug\LoyalFilial.Framework.Core.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data\obj\Debug\LoyalFilial.Framework.Data.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data\obj\Debug\LoyalFilial.Framework.Data.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data\obj\Debug\LoyalFilial.Framework.Data.csprojResolveAssemblyReference.cache

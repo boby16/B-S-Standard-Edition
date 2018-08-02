@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>预约修改</title>
+    <meta charset="UTF-8">
+    <link href="../Css/Main.css" rel="stylesheet">
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="kvlist" style="border: 1px solid red;">
+        <ul id="ulReserve">
+            <li>
+                <span class="left">车主姓名：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="CustormerName">
+                <input type="hidden" id="MFCustomerId" />
+            </li>
+            <li>
+                <span class="left">手机：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="MobileNo">
+            </li>
+            <li>
+                <span class="left">生日：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="BirthDayText">
+            </li>
+            <li>
+                <span class="left">住址：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="Address">
+            </li>
+            <li>
+                <span class="left">品牌：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="CarBrand">
+            </li>
+            <li>
+                <span class="left">车型：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="CarType">
+            </li>
+            <li>
+                <span class="left">车牌号：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="PlateNO">
+            </li>
+            <li>
+                <span class="left">车架号：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="VIN">
+            </li>
+            <li><span>...............................................................</span></li>
+            <li>
+                <span class="left">预约项目：</span>
+                <input class="right text" type="text" id="ServiceItem" />
+            </li>
+            <li>
+                <span class="left">预约日期：</span>
+                <input class="right text" type="text" id="ReservedDateText" />
+            </li>
+            <li style="height:auto;">
+                <span class="kvlist left" style="vertical-align:top;">备注：</span>
+                <textarea class="right" rows="5" style="width:398px" id="Remark"></textarea>
+            </li>
+            <li style="margin-top:50px">
+                <span class="left">预约状态：</span>
+                <select id="State">
+                    <option value="0">预约申请中</option>
+                    <option value="1">预约成功</option>
+                    <option value="2">维保完成</option>
+                    <option value="-1">预约失败</option>
+                    <option value="-2">客户取消</option>
+                    <option value="-3">拒绝</option>
+                </select>
+            </li>
+            <li style="height:auto;">
+                <span class="kvlist left" style="vertical-align:top;">服务反馈：</span>
+                <textarea class="right" rows="5" style="width:398px" id="FeedBack"></textarea>
+            </li>
+        </ul>
+        <div class="center" style="margin-top:50px;margin-bottom:20px;">
+            <input type="hidden" id="MFReserveId" />
+            <input type="button" class="button" style="width:120px" value="保存" id="btnSave" />
+            <input type="button" class="button" style="width:120px" value="返回" id="btnBack" />
+        </div>
+    </div>
+    <script>
+        commonPageJsMng.initJs();
+        var reserveEditJsMng = reserveEditJsMng || {
+            init: function () {
+                var rId = commonPageJsMng.GetUrlParms("rId");
+                if (rId != null && rId != "" && rId > 0) {
+                    $("#MFReserveId").val(rId);
+                    reserveEditJsMng.loadData();
+                }
+                else {
+                    $("#MFReserveId").val("0");
+                }
+                var cId = commonPageJsMng.GetUrlParms("cId");
+                if (cId != null && cId != "" && cId > 0) {
+                    $("#MFCustomerId").val(cId);
+                    reserveEditJsMng.loadCustData();
+                }
+                else {
+                    $("#MFCustomerId").val("0");
+                }
+                $("#btnSave").click(function () {
+                    reserveEditJsMng.saveData();
+                });
+                $("#btnBack").click(function () {
+                    window.history.go(-1);
+                });
+
+            },
+            loadData: function () {
+                var searchTxt = $("#MFReserveId").val();
+                $("#ulReserve").find("li input.right").each(function () {
+                    $(this).val("");
+                });
+                if (typeof (searchTxt) != "undefined") {
+                    $.dataManager.post({
+                        dataJson: {
+                            AccountId: $.cookie.get($.cst.cookie.accountId),
+                            Token: $.cookie.get($.cst.cookie.token),
+                            RId: searchTxt
+                        },
+                        postUrl: "/Auth/Auth.svc/GetMFReserveDetail",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (msg.IsSuccess) {
+                                    var _dataDetail = jQuery.parseJSON(msg.Message);
+                                    if (typeof (_dataDetail) != "undefined" && _dataDetail != "null" && _dataDetail != "") {
+                                        for (var item in _dataDetail) {
+                                            if (_dataDetail[item] == "null")
+                                                $("#" + item).val("");
+                                            //else
+                                            //$("#" + item).val(_dataDetail[item]);
+                                        }
+                                    }
+                                }
+                                else {
+                                    if (msg.Code == -1000) {
+                                        alert(msg.Message);
+                                        location.href = "../MaintainFactory/Login.html";
+                                    }
+                                    else
+                                        alert(msg.Message);
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+            loadCustData: function () {
+                var searchTxt = $("#MFCustomerId").val();
+                $("#ulReserve").find("li input.readonly").each(function () {
+                    $(this).val("");
+                });
+                if (typeof (searchTxt) != "undefined") {
+                    $.dataManager.post({
+                        dataJson: {
+                            AccountId: $.cookie.get($.cst.cookie.accountId),
+                            Token: $.cookie.get($.cst.cookie.token),
+                            CId: searchTxt
+                        },
+                        postUrl: "/Auth/Auth.svc/GetMFCustomerDetail",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (msg.IsSuccess) {
+                                    var _dataDetail = jQuery.parseJSON(msg.Message);
+                                    if (typeof (_dataDetail) != "undefined" && _dataDetail != "null" && _dataDetail != "") {
+                                        for (var item in _dataDetail) {
+                                            if (_dataDetail[item] == "null")
+                                                $("#" + item).val("");
+                                            //else
+                                            //$("#" + item).val(_dataDetail[item]);
+                                        }
+                                    }
+                                }
+                                else {
+                                    if (msg.Code == -1000) {
+                                        alert(msg.Message);
+                                        location.href = "../MaintainFactory/Login.html";
+                                    }
+                                    else
+                                        alert(msg.Message);
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+            saveData: function () {
+                var checkResult = reserveEditJsMng.saveDataCheck();
+                if (checkResult != "0") {
+                    var jsonSave = '{"MFReserveId":"' + $("#MFReserveId").val() + '","MFCustomerId":"' + $("#MFCustomerId").val()
+                        + '","ServiceItem":"' + $("#ServiceItem").val() + '","ReservedDate":"' + $("#ReservedDateText").val()
+                       + '","State":"' + $.value.get("State") + '","Remark":"' + $("#Remark").val() + '","FeedBack":"' + $("#FeedBack").val() + '"}';
+
+                    $.dataManager.post({
+                        dataJson: {
+                            AccountId: $.cookie.get($.cst.cookie.accountId),
+                            Token: $.cookie.get($.cst.cookie.token),
+                            saveRequest: jsonSave
+                        },
+                        postUrl: "/Auth/Auth.svc/SaveMFReserve",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (!msg.IsSuccess)
+                                    alert("保存失败！");
+                                else {
+                                    alert("保存成功！");
+                                    location.href = "ReserveMng.html";
+                                }
+                            }
+                            else
+                                alert("保存失败！");
+                        }
+                    });
+                }
+            },
+            saveDataCheck: function () {
+                if ($("#ServiceItem").val() == ""
+                    || $("#ReservedDateText").val() == "") {
+                    alert("内容填写不完整！");
+                    return "0";
+                }
+                //if (new Date($("#MaintainDate").val()) < new Date()) {
+                //    alert("保养日期不能早于提醒日期！");
+                //    return "0";
+                //}
+            },
+        }
+        reserveEditJsMng.init();
+    </script>
+</body>
+</html>

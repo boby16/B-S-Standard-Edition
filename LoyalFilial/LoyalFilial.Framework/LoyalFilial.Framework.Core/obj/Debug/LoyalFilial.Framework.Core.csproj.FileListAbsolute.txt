@@ -1,0 +1,7 @@
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Core\bin\Debug\LoyalFilial.Framework.Core.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Core\bin\Debug\LoyalFilial.Framework.Core.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Core\obj\Debug\LoyalFilial.Framework.Core.Util.TypeConversion.TC.resources
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Core\obj\Debug\LoyalFilial.Framework.Core.csproj.GenerateResource.Cache
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Core\obj\Debug\LoyalFilial.Framework.Core.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Core\obj\Debug\LoyalFilial.Framework.Core.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Core\obj\Debug\LoyalFilial.Framework.Core.csprojResolveAssemblyReference.cache

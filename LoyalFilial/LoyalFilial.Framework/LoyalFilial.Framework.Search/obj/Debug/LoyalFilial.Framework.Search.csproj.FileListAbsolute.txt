@@ -1,0 +1,8 @@
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Search\bin\Debug\LoyalFilial.Framework.Search.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Search\bin\Debug\LoyalFilial.Framework.Search.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Search\bin\Debug\EasyNet.Solr.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Search\bin\Debug\EasyNet.Solr.xml
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Search\obj\Debug\LoyalFilial.Framework.Search.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Search\obj\Debug\LoyalFilial.Framework.Search.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Search\bin\Debug\EasyNet.Solr.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Search\obj\Debug\LoyalFilial.Framework.Search.csprojResolveAssemblyReference.cache

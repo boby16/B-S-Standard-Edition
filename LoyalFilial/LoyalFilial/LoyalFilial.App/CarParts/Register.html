@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>汽配用户注册</title>
+    <meta charset="UTF-8">
+    <link href="../Css/Main.css" rel="stylesheet">
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="center" style="width: 1000px">
+        <script>commonPageJsMng.initHeaderMenu();</script>
+
+        <div class="body">
+            <div class="left" style="float: left;">
+                <img src="../Images/login_1.png" style="width: 500px; height: 350px" />
+            </div>
+            <div class="right">
+                <div class="login" id="divRegister1">
+                    <div>
+                        <p>汽配商用户注册</p>
+                    </div>
+                    <div style="padding-right:30px">
+                        <ul>
+                            <li>
+                                <span>手机号</span><br />
+                                <input type="text" maxlength="20" class="text" />
+                            </li>
+                            <li>
+                                <span>验证码</span><br />
+                                <input style="width: 150px" type="text" maxlength="20" class="text" />
+                                <input type="button" class="button" value="获取验证码" style="width:80px; font-size:12px" />
+                            </li>
+                            <li>
+                                <span>输入密码</span><br />
+                                <input type="text" maxlength="20" class="text" />
+                            </li>
+                            <li>
+                                <span>再次输入密码</span><br />
+                                <input type="text" maxlength="20" class="text" />
+                            </li>
+                        </ul>
+                        <div>
+                            <input type="button" id="btnNext" value="下一步" class="button" />
+                        </div>
+                        <div style="margin-top:20px">
+                            <a href="Login.html" class="link">已有账号，请登录</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login" style="display:none; height:650px; width:400px" id="divRegister2">
+                    <div>
+                        <ul>
+                            <li>
+                                <span>公司：</span><span style="color: red">*</span><br />
+                                <input class="text" type="text" placeholder="商户名称" id="VendorName" maxlength="20" />
+                            </li>
+                            <li>
+                                <span>城市：</span><span style="color: red">*</span><br />
+                                <input class="text" type="text" placeholder="联系电话" id="VendorPhone" maxlength="20" />
+                            </li>
+                            <li>
+                                <span>地址：</span><span style="color: red">*</span><br />
+                                <input class="text" type="text" placeholder="联系电话" id="VendorPhone" maxlength="20" />
+                            </li>
+                            <li>
+                                <span>电话：</span><br />
+                                <input class="text" type="text" placeholder="联系电话" id="VendorPhone" maxlength="20" />
+                            </li>
+                            <li>
+                                <span>手机：</span><span style="color: red">*</span><br />
+                                <input class="text" type="text" placeholder="联系电话" id="VendorPhone" maxlength="20" />
+                            </li>
+                            <li>
+                                <span>联系人：</span><span style="color: red">*</span><br />
+                                <input class="text" type="text" placeholder="联系电话" id="VendorPhone" maxlength="20" />
+                            </li>
+                            <li>
+                                <span>联盟：</span><span style="color: red">*</span><br />
+                                <input class="text" type="text" placeholder="联系电话" id="VendorPhone" maxlength="20" />
+                            </li>
+                            <li style="height:auto;">
+                                <span>主营：</span><span style="color: red">*</span><br />
+                                <ul class="zhuyin">
+                                    <li class="li"><input type="checkbox" value="洗车" id="cbxc" /><label for="cbxc">洗车</label></li>
+                                    <li class="li"><input type="checkbox" value="保养" id="cbxc" /><label for="cbxc">保养</label></li>
+                                    <li class="li"><input type="checkbox" value="快修" id="cbxc" /><label for="cbxc">快修</label></li>
+                                    <li class="li"><input type="checkbox" value="钣金" id="cbxc" /><label for="cbxc">钣金</label></li>
+                                    <li class="li"><input type="checkbox" value="喷漆" id="cbxc" /><label for="cbxc">喷漆</label></li>
+                                    <li class="li"><input type="checkbox" value="维修" id="cbxc" /><label for="cbxc">维修</label></li>
+                                    <li class="li"><input type="checkbox" value="道路救援" id="cbxc" /><label for="cbxc">道路救援</label></li>
+                                    <li class="li"><input type="checkbox" value="补胎" id="cbxc" /><label for="cbxc">补胎</label></li>
+                                    <li class="li"><input type="checkbox" value="换胎" id="cbxc" /><label for="cbxc">换胎</label></li>
+                                    <li class="li"><input type="checkbox" value="动平衡" id="cbxc" /><label for="cbxc">动平衡</label></li>
+                                    <li class="li"><input type="checkbox" value="四轮定位" id="cbxc" /><label for="cbxc">四轮定位</label></li>
+                                    <li class="li"><input type="checkbox" value="美容" id="cbxc" /><label for="cbxc">美容</label></li>
+                                    <li class="li"><input type="checkbox" value="改装" id="cbxc" /><label for="cbxc">改装</label></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div>
+                            <input type="button" id="btnRegiste" value="注 册" class="button" />
+                        </div>
+                        <div style="margin-top:20px">
+                            <a href="Login.html" class="link">已有账号，请登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>commonPageJsMng.initFooter();</script>
+    </div>
+    <script>
+        var registerCpJsMng = registerCpJsMng || {
+            init: function () {
+                $("#btnNext").click(function () {
+                    registerCpJsMng.nextRegister();
+                });
+            },
+            nextRegister: function () {
+                $("#divRegister2").css('display', 'inline-block');
+                $("#divRegister1").hide();
+            },
+            Register: function () { }
+        };
+        registerCpJsMng.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>发货管理</title>
+    <link href="../Css/Main.css" rel="stylesheet" />
+    <link href="../Css/PopUp.css" rel="stylesheet" />
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="center" style="width: 1000px">
+        <script>commonPageJsMng.initHeaderMenu();</script>
+
+        <div class="body">
+            <div>
+                <div class="condition">
+                    <div>
+                        <span class="lable">客户采购单号</span>
+                        <input type="text" id="txtPurchaseId" class="text" style="width:150px" />
+                    </div>
+                    <div>
+                        <span class="lable">发货日期</span>
+                        <input type="text" id="txtDateStart" class="text" style="width:150px" onclick="WdatePicker()" />
+                        <span style="width:20px">--</span>
+                        <input type="text" id="txtDateEnd" class="text" style="width:150px" onclick="WdatePicker()" />
+                    </div>
+
+                    <div>
+                        <input class="button" type="button" value="查  询" style="width:120px" id="btnSearch" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="list">
+                <table>
+                    <tr>
+                        <th width="100px">客户采购单号</th>
+                        <th width="100px">计划交货日期</th>
+                        <th>客户</th>
+                        <th width="100px">发货日期</th>
+                        <th>品牌</th>
+                        <th>车型</th>
+                        <th>配件名称</th>
+                        <th>描述</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>总金额</th>
+                        <th>状态</th>
+                        <th>发货单号</th>
+                        <th style="width:100px">操作</th>
+                    </tr>
+                    <tbody id="orderList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>commonPageJsMng.initFooter();</script>
+    </div>
+
+    <script type="text/javascript" src="../JS/Ctrl/DatePicker/WdatePicker.js"></script> 
+    <script>
+        var deliverMngJsMng = deliverMngJsMng || {
+            init: function () {
+                $("#btnSearch").click(function () {
+                    deliverMngJsMng.loadDataList();
+                });
+            },
+            loadDataList: function () {
+                $("#orderList").empty();
+                var purId = 0;
+                if ($("#txtPurchaseId").val() != "")
+                    purId = parseInt($("#txtPurchaseId").val());
+
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        PurchaseId: purId,
+                        StartDate: $("#txtDateStart").val(),
+                        EndDate: $("#txtDateEnd").val(),
+                        PurState: $("#selState").val()
+                    },
+                    postUrl: "/Auth/Auth.svc/GetDeliverList",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (msg.IsSuccess) {
+                                var _dataList = jQuery.parseJSON(msg.Message);
+                                if (typeof (_dataList) != "undefined" && _dataList.length > 0) {
+                                    $.each(_dataList, function (i, item) {
+                                        var display = (item.DeliverReturnId > 0) ? "display:none" : "";
+                                        var trTemp = $.template.render(deliverMngJsMng.template.tr,
+                                             {
+                                                 PurchaseId: item.PurchaseId, MaintainName: item.MaintainName, PlanDeliveryDate: item.PlanDeliveryDateText,
+                                                 CarBrand: item.CarBrand, CarType: item.CarType, DeliverDateText: item.DeliverDateText,
+                                                 PartsName: item.PartsName, Remark: item.Remark, Quantity: item.Quantity, Price: item.Price, Amount: item.Amount,
+                                                 DeliverState: item.DeliverState, DeliverId: item.DeliverId, Display: display
+                                             })
+                                        $("#orderList").append(trTemp);
+                                    });
+                                }
+                            }
+                            else {
+                                if (msg.Code == -1000) {
+                                    alert(msg.Message);
+                                    location.href = "../MaintainFactory/Login.html";
+                                }
+                                else
+                                    alert(msg.Message);
+                            }
+                        }
+                    }
+                });
+            },
+            deliverReturn: function (deliverId) {
+                if (deliverId <= 0) {
+                    alert("发货单号不存在！");
+                    return;
+                }
+
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        DeliverId: deliverId
+                    },
+                    postUrl: "/Auth/Auth.svc/SaveDeliverReturn",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (!msg.IsSuccess)
+                                alert("保存失败！");
+                            else {
+                                alert("保存成功！");
+                            }
+                        }
+                        else
+                            alert("保存失败！");
+                    }
+                });
+            },
+            template: {
+                tr: '<tr>\
+                        <td>${PurchaseId}</td>\
+                        <td>${PlanDeliveryDate}</td>\
+                        <td>${MaintainName}</td>\
+                        <td>${DeliverDateText}</td>\
+                        <td>${CarBrand}</td>\
+                        <td>${CarType}</td>\
+                        <td>${PartsName}</td>\
+                        <td>${Remark}</td>\
+                        <td>${Quantity}</td>\
+                        <td>${Price}</td>\
+                        <td>${Amount}</td>\
+                        <td>${DeliverState}</td>\
+                        <td>${DeliverId}</td>\
+                        <td>\
+                            <a href="javascript:void(0);" style="${Display}" onclick="deliverMngJsMng.deliverReturn(${DeliverId},this);">退货</a>\
+                        </td>\
+                    </tr>'
+            }
+        };
+        deliverMngJsMng.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>发送短信</title>
+    <meta charset="UTF-8">
+    <link href="../Css/Main.css" rel="stylesheet">
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="kvlist" style="border: 1px solid red;">
+        <ul id="ulMaintain">
+            <li>
+                <span class="left">车主姓名：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="CustormerName">
+                <input type="hidden" id="MFCustomerId" />
+            </li>
+            <li>
+                <span class="left">手机：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="MobileNo">
+            </li>
+            <li>
+                <span class="left">生日：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="BirthDayText">
+            </li>
+            <li>
+                <span class="left">住址：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="Address">
+            </li>
+            <li>
+                <span class="left">品牌：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="CarBrand">
+            </li>
+            <li>
+                <span class="left">车型：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="CarType">
+            </li>
+            <li>
+                <span class="left">车牌号：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="PlateNO">
+            </li>
+            <li>
+                <span class="left">车架号：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="VIN">
+            </li>
+            <li><span>...............................................................</span></li>
+            <li>
+                <span class="left">短信内容：</span>
+                <input class="right text" type="text" id="SMSComtent" />
+            </li>
+        </ul>
+        <div class="center" style="margin-top:50px;margin-bottom:20px;">
+            <input type="button" class="button" style="width:120px" value="发送" id="btnSave" />
+            <input type="button" class="button" style="width:120px" value="返回" id="btnBack" />
+        </div>
+    </div>
+    <script>
+        commonPageJsMng.initJs();
+        var sendCustSMSJsMng = sendCustSMSJsMng || {
+            init: function () {
+                var cId = commonPageJsMng.GetUrlParms("cId");
+                if (cId != null && cId != "" && cId > 0) {
+                    $("#MFCustomerId").val(cId);
+                    sendCustSMSJsMng.loadCustData();
+                }
+                else {
+                    $("#MFCustomerId").val("0");
+                }
+                $("#btnSave").click(function () {
+                    sendCustSMSJsMng.saveData();
+                });
+                $("#btnBack").click(function () {
+                    window.history.go(-1);
+                });
+
+            },
+            loadCustData: function () {
+                var searchTxt = $("#MFCustomerId").val();
+                $("#ulMaintain").find("li input.readonly").each(function () {
+                    $(this).val("");
+                });
+                if (typeof (searchTxt) != "undefined") {
+                    $.dataManager.post({
+                        dataJson: {
+                            AccountId: $.cookie.get($.cst.cookie.accountId),
+                            Token: $.cookie.get($.cst.cookie.token),
+                            CId: searchTxt
+                        },
+                        postUrl: "/Auth/Auth.svc/GetMFCustomerDetail",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (msg.IsSuccess) {
+                                    var _dataDetail = jQuery.parseJSON(msg.Message);
+                                    if (typeof (_dataDetail) != "undefined" && _dataDetail != "null" && _dataDetail != "") {
+                                        for (var item in _dataDetail) {
+                                            if (_dataDetail[item] == "null")
+                                                $("#" + item).val("");
+                                            //else
+                                            //$("#" + item).val(_dataDetail[item]);
+                                        }
+                                    }
+                                }
+                                else {
+                                    if (msg.Code == -1000) {
+                                        alert(msg.Message);
+                                        location.href = "../MaintainFactory/Login.html";
+                                    }
+                                    else
+                                        alert(msg.Message);
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+            sendSms: function () {
+                var checkResult = sendCustSMSJsMng.saveDataCheck();
+                if (checkResult != "0") {
+                    var jsonSave = '{"MobileNo":"' + $("#MobileNo").val() + '","SMSComtent":"' + $("#SMSComtent").val() + '"}';
+
+                    $.dataManager.post({
+                        dataJson: {
+                            AccountId: $.cookie.get($.cst.cookie.accountId),
+                            Token: $.cookie.get($.cst.cookie.token),
+                            saveRequest: jsonSave
+                        },
+                        postUrl: "/Auth/Auth.svc/SendCustSMS",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (!msg.IsSuccess)
+                                    alert("保存失败！");
+                                else {
+                                    alert("保存成功！");
+                                    location.href = "CustomerMng.html";
+                                }
+                            }
+                            else
+                                alert("保存失败！");
+                        }
+                    });
+                }
+            },
+            saveDataCheck: function () {
+                if ($("#MobileNo").val() == "") {
+                    alert("手机号不存在！");
+                    return "0";
+                }
+                if ($("#SMSComtent").val() == "") {
+                    alert("短信内容不能为空！");
+                    return "0";
+                }
+            },
+        }
+        sendCustSMSJsMng.init();
+    </script>
+
+</body>
+</html>

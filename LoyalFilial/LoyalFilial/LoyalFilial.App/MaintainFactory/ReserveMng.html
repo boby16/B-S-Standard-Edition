@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>预约清单</title>
+    <link href="../Css/Main.css" rel="stylesheet" />
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="center" style="width: 1000px">
+        <script>commonPageJsMng.initHeaderMenu();</script>
+
+        <div class="body">
+            <div>
+                <div class="condition">
+                    <div style="float:left;">
+                        <span class="lable">起始日期</span>
+                        <input type="text" id="txtStartDate" class="text" style="width:150px" />
+                    </div>
+                    <div style="float:left;">
+                        <span class="lable">截止日期</span>
+                        <input type="text" id="txtEndDate" class="text" style="width:150px" />
+                    </div>
+                    <div >
+                        <input class="button" type="button" value="查  询" style="width:120px" id="btnSearch" />
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div style="float:right;">
+                    <input class="button" type="button" value="客户清单" title="给客户发送短信" style="width:120px" id="btnCustomerList" />
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="list">
+                <table>
+                    <tr>
+                        <th>车主姓名</th>
+                        <th>手机</th>
+                        <th>品牌</th>
+                        <th>车型</th>
+                        <th>预约方式</th>
+                        <th>预约项目</th>
+                        <th>预约日期</th>
+                        <th>状态</th>
+                        <th style="width:100px">操作</th>
+                    </tr>
+                    <tbody id="reserveList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>commonPageJsMng.initFooter();</script>
+    </div>
+    <script>
+        var reserveMngJsMng = reserveMngJsMng || {
+            init: function () {
+                $("#btnSearch").click(function () {
+                    reserveMngJsMng.loadDataList();
+                });
+                $("#btnCustomerList").click(function () {
+                    location.href = "CustomerMng.html";
+                });
+            },
+            loadDataList: function () {
+                var startDate = $("#txtStartDate").val();
+                var endDate = $("#txtEndDate").val();
+                $("#reserveList").empty();
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        StartDate: startDate,
+                        EndDate: endDate
+                    },
+                    postUrl: "/Auth/Auth.svc/GetMFReserveList",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (msg.IsSuccess) {
+                                var _dataList = jQuery.parseJSON(msg.Message);
+                                if (typeof (_dataList) != "undefined" && _dataList.length > 0) {
+                                    $.each(_dataList, function (i, item) {
+                                        var trTemp = $.template.render(reserveMngJsMng.template.tr,
+                                        {
+                                            MFReserveId: item.MFReserveId, CustormerName: item.CustormerName, MobileNoText: item.MobileNoText,
+                                            CarBrand: item.CarBrand, CarType: item.CarType,
+                                            ReserveTypeText: item.ReserveTypeText, StateText: item.StateText,
+                                            ServiceItem: item.ServiceItem, ReservedDateText: item.ReservedDateText
+                                        })
+                                        $("#reserveList").append(trTemp);
+                                    });
+                                }
+                            }
+                            else {
+                                if (msg.Code == -1000) {
+                                    alert(msg.Message);
+                                    location.href = "../MaintainFactory/Login.html";
+                                }
+                                else
+                                    alert(msg.Message);
+                            }
+                        }
+                    }
+                });
+            },
+            modify: function (rId) {
+                location.href = "ReserveEdit.html?rId=" + rId;
+            },
+            template: {
+                tr: '<tr>\
+                        <td>${CustormerName}</td>\
+                        <td>${MobileNoText}</td>\
+                        <td>${CarBrand}</td>\
+                        <td>${CarType}</td>\
+                        <td>${ReserveTypeText}</td>\
+                        <td>${ServiceItem}</td>\
+                        <td>${ReservedDateText}</td>\
+                        <td>${StateText}</td>\
+                        <td>\
+                            <a href="javascript:void(0);" onclick="reserveMngJsMng.modify(${MFReserveId});">查看</a>\
+                            <a href="javascript:void(0);" onclick="reserveMngJsMng.modify(${MFReserveId});">修改</a>\
+                        </td>\
+                    </tr>'
+            }
+        };
+        reserveMngJsMng.init();
+    </script>
+</body>
+</html>

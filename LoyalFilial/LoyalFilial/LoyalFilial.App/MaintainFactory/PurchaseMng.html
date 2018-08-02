@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>采购单管理</title>
+    <link href="../Css/Main.css" rel="stylesheet" />
+    <link href="../Css/PopUp.css" rel="stylesheet" />
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="center" style="width: 1000px">
+        <script>commonPageJsMng.initHeaderMenu();</script>
+
+        <div class="body">
+            <div>
+                <div class="condition">
+                    <div>
+                        <span class="lable">采购单号</span>
+                        <input type="text" id="txtPurchaseId" class="text" style="width:150px" />
+                    </div>
+                    <div>
+                        <span class="lable">状态</span>
+                        <select id="selState">
+                            <option value="">所有</option>
+                            <option value="-1">作废</option>
+                            <option value="0">制作中</option>
+                            <option value="1">有效</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input class="button" type="button" value="查  询" style="width:120px" id="btnSearch" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="list">
+                <table>
+                    <tr>
+                        <th width="80px">采购单号</th>
+                        <th width="80px">采购日期</th>
+                        <th>供应商</th>
+                        <th>交货日期</th>
+                        <th>品牌</th>
+                        <th>车型</th>
+                        <th>配件</th>
+                        <th>描述</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>总金额</th>
+                        <th style="width:100px">操作</th>
+                    </tr>
+                    <tbody id="purchaseList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>commonPageJsMng.initFooter();</script>
+    </div>
+
+    <script type="text/javascript" src="../JS/Ctrl/DatePicker/WdatePicker.js"></script> 
+    <script>
+        var purchaseMngJsMng = purchaseMngJsMng || {
+            init: function () {
+                $("#btnSearch").click(function () {
+                    purchaseMngJsMng.loadDataList();
+                });
+            },
+            loadDataList: function () {
+                var purId = $("#txtPurchaseId").val();
+                var purState = $("#selState").val();
+                $("#purchaseList").empty();
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        PurchaseId: purId,
+                        PurState: purState,
+                    },
+                    postUrl: "/Auth/Auth.svc/GetPurchaseList",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (msg.IsSuccess) {
+                                var _dataList = jQuery.parseJSON(msg.Message);
+                                if (typeof (_dataList) != "undefined" && _dataList.length > 0) {
+                                    $.each(_dataList, function (i, item) {
+                                        var trTemp = $.template.render(purchaseMngJsMng.template.tr,
+                                             {
+                                                 PurchaseId: item.PurchaseId, PurchaseDateText: item.PurchaseDateText,
+                                                 CarPartsName: item.CarPartsName, PlanDeliveryDateText: item.PlanDeliveryDateText,
+                                                 CarBrand: item.CarBrand, CarType: item.CarType, 
+                                                 PartsName: item.PartsName, Quantity: item.Quantity, Price: item.Price, Amount: item.Amount,
+                                                 Remark: item.Remark
+                                             })
+                                        $("#purchaseList").append(trTemp);
+                                    });
+                                }
+                            }
+                            else {
+                                if (msg.Code == -1000) {
+                                    alert(msg.Message);
+                                    location.href = "../MaintainFactory/Login.html";
+                                }
+                                else
+                                    alert(msg.Message);
+                            }
+                        }
+                    }
+                });
+            },
+            template: {
+                tr: '<tr>\
+                        <td>${PurchaseId}</td>\
+                        <td>${PurchaseDateText}</td>\
+                        <td>${CarPartsName}</td>\
+                        <td>${PlanDeliveryDateText}</td>\
+                        <td>${CarBrand}</td>\
+                        <td>${CarType}</td>\
+                        <td>${PartsName}</td>\
+                        <td>${Remark}</td>\
+                        <td>${Quantity}</td>\
+                        <td>${Price}</td>\
+                        <td>${Amount}</td>\
+                        <td>\
+                        </td>\
+                    </tr>'
+            }
+        };
+        purchaseMngJsMng.init();
+    </script>
+</body>
+</html>

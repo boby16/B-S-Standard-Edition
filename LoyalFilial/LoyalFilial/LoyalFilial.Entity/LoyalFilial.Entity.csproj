@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{35E5151A-BE93-4D2D-9B08-204F156E9A74}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoyalFilial.Entity</RootNamespace>
+    <AssemblyName>LoyalFilial.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LoyalFilial.Framework.Data">
+      <HintPath>..\..\Library\RosetteStone.Framework\LoyalFilial.Framework.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthCodeDO.cs" />
+    <Compile Include="FavoritesDO.cs" />
+    <Compile Include="Auth_LoginDO.cs" />
+    <Compile Include="Auth_LoginlogDO.cs" />
+    <Compile Include="Auth_UserDO.cs" />
+    <Compile Include="CarPartsDO.cs" />
+    <Compile Include="CityDO.cs" />
+    <Compile Include="F_InquiryDO.cs" />
+    <Compile Include="F_PurchaseDO.cs" />
+    <Compile Include="LogDO.cs" />
+    <Compile Include="MainServiceItemDO.cs" />
+    <Compile Include="MaintainFactoryDO.cs" />
+    <Compile Include="F_MaintainDO.cs" />
+    <Compile Include="F_CustomerDO.cs" />
+    <Compile Include="F_ReservedDO.cs" />
+    <Compile Include="F_SMSSendLogDO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="P_DeliverDO.cs" />
+    <Compile Include="P_DeliverReturnDO.cs" />
+    <Compile Include="P_QuotationDO.cs" />
+    <Compile Include="ResponseDTO.cs" />
+    <Compile Include="VO\BaseVO.cs" />
+    <Compile Include="VO\P_DeliverVO.cs" />
+    <Compile Include="VO\F_PurchaseVO.cs" />
+    <Compile Include="VO\P_QuotationVO.cs" />
+    <Compile Include="VO\QuotationQueryVO.cs" />
+    <Compile Include="VO\F_InquiryVO.cs" />
+    <Compile Include="VO\F_ReservedVO.cs" />
+    <Compile Include="VO\F_MaintainVO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LoyalFilial.Common\LoyalFilial.Common.csproj">
+      <Project>{7133ec90-175a-4243-9c48-40efdeb84b8e}</Project>
+      <Name>LoyalFilial.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

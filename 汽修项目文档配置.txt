@@ -1,0 +1,31 @@
+1、安装mysql
+2、navicat
+3、vs 2003
+
+每天启动mysql 服务：管理员权限启动cmd程序，net start mysql
+然后开启navicat
+
+myssql：登陆 
+ip/host:localhost 
+user：root
+pwd: 123456
+连接名称：yzb
+数据库：loyalfilial_carservice
+
+
+user：test
+pwd：空
+
+车盈微信公众平台：
+834086390@qq.com
+123qwe!@#
+
+短信平台：
+www.eee1.cn
+用户13817543398
+密码 513595 
+sign:1234【京东】
+接口密码：836BF65FC28CA2E0B13AE7232E00 
+
+
+http://sms.1xinxi.cn/asmx/smsservice.aspx?name=13817543398&pwd=513595&content=619404&mobile=13482069045&stime=&sign=1234【京东】&type=pt&extno=

@@ -1,0 +1,8 @@
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.Test\bin\Debug\LoyalFilial.Framework.Job.Test.exe.config
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.Test\bin\Debug\LoyalFilial.Framework.Job.Test.exe
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.Test\bin\Debug\LoyalFilial.Framework.Job.Test.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.Test\bin\Debug\LoyalFilial.Framework.Job.Domain.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.Test\bin\Debug\LoyalFilial.Framework.Job.Domain.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.Test\obj\Debug\LoyalFilial.Framework.Job.Test.csprojResolveAssemblyReference.cache
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.Test\obj\Debug\LoyalFilial.Framework.Job.Test.exe
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.Test\obj\Debug\LoyalFilial.Framework.Job.Test.pdb

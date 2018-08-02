@@ -1,0 +1,10 @@
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\bin\Debug\LoyalFilial.Framework.Data.MySql.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\bin\Debug\LoyalFilial.Framework.Data.MySql.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\bin\Debug\LoyalFilial.Framework.Core.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\bin\Debug\LoyalFilial.Framework.Data.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\bin\Debug\MySql.Data.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\bin\Debug\LoyalFilial.Framework.Data.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\bin\Debug\LoyalFilial.Framework.Core.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\obj\Debug\LoyalFilial.Framework.Data.MySql.csprojResolveAssemblyReference.cache
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\obj\Debug\LoyalFilial.Framework.Data.MySql.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Data.MySql\obj\Debug\LoyalFilial.Framework.Data.MySql.pdb

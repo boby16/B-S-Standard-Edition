@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>汽配搜索</title>
+    <link href="../Css/Main.css" rel="stylesheet" />
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="center" style="width: 1000px">
+        <script>commonPageJsMng.initHeaderMenu();</script>
+
+        <div class="body">
+            <div>
+                <div class="condition">
+                    <div style="float:left;">
+                        <span class="lable">起始日期</span>
+                        <input type="text" id="txtStartDate" class="text" style="width:150px" />
+                    </div>
+                    <div style="float:left;">
+                        <span class="lable">截止日期</span>
+                        <input type="text" id="txtEndDate" class="text" style="width:150px" />
+                    </div>
+                    <div >
+                        <input class="button" type="button" value="查  询" style="width:120px" />
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div style="float:right;">
+                    <input class="button" type="button" value="新  增" style="width:120px" />
+                    <input class="button" type="button" value="余  额" title="短信充值" style="width:120px" />
+                    <input class="button" type="button" value="客户清单" title="给客户发送短信" style="width:120px" />
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="list">
+                <table>
+                    <tr>
+                        <th>车主姓名</th>
+                        <th>手机</th>
+                        <th>生日</th>
+                        <th>车牌号</th>
+                        <th>车架号</th>
+                        <th>保养项目</th>
+                        <th>修车</th>
+                        <th>提醒日期</th>
+                        <th>维保记录</th>
+                        <th style="width:100px">操作</th>
+                    </tr>
+                    <tr>
+                        <td>李生</td>
+                        <td>13000000000</td>
+                        <td>1980-01-01</td>
+                        <td>沪A.88888</td>
+                        <td>123523409859823940297340294</td>
+                        <td>贴膜、保养、洗车</td>
+                        <td>修车</td>
+                        <td>2016-01-01</td>
+                        <td>已保养</td>
+                        <td>
+                            <a>修改</a>
+                            <a>维保记录</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <script>commonPageJsMng.initFooter();</script>
+    </div>
+</body>
+</html>

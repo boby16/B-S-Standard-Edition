@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>询价单编辑</title>
+    <meta charset="UTF-8">
+    <link href="../Css/Main.css" rel="stylesheet">
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="kvlist" style="border: 1px solid red;">
+        <ul style="height:600px" id="ulInquiry">
+            <li>
+                <span style="text-align:right" class="left">询价单号：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="InquiryId">
+            </li>
+            <li>
+                <span style="text-align:right" class="left">询价日期：</span>
+                <input class="right readonly" readonly="readonly" type="text" id="InquiryDateText" />
+            </li>
+            <li><span style="text-align:right" class="left"><span style="color:red">*</span>VIN码：</span><input class="right text" type="text" id="VIN" /></li>
+            <li><span style="text-align:right" class="left"><span style="color:red">*</span>品牌：</span><input class="right text" type="text" id="CarBrand" /></li>
+            <li><span style="text-align:right" class="left"><span style="color:red">*</span>车型：</span><input class="right text" type="text" id="CarType" /></li>
+            <li><span style="text-align:right" class="left"><span style="color:red">*</span>维修清单：</span><input class="right text" type="text" id="MaintainListImage" /></li>
+            <li><span style="text-align:right" class="left"><span style="color:red">*</span>配件名称：</span><input class="right text" type="text" id="PartsName" /></li>
+            <li><span style="text-align:right" class="left"><span style="color:red">*</span>数量：</span><input class="right text" type="text" id="Quantity" /></li>
+            <li><span style="text-align:right" class="left"><span style="color:red">*</span>交货日期：</span><input class="right text" type="text" id="PlanDeliveryDateText" onclick="WdatePicker()" /></li>
+            <li><span style="text-align:right" class="left">状态：</span>
+                <input type="radio" id="State" value="0" name="rdoState" checked="checked" /><label for="State">制作中</label>
+                <input type="radio" id="State1" value="1" name="rdoState" /><label for="State1">有效</label>
+                <input type="radio" id="State2" value="-1" name="rdoState" /><label for="State2">作废</label>
+            </li>
+            <li><span style="text-align:right" class="left">联盟：</span><input class="right text" type="text" id="Alliance" /></li>
+            <li><span style="text-align:right" class="left">汽配商：</span><input class="right text" type="text" id="CarPartsId" /></li>
+            <li>
+                <span style="text-align:right" class="left"></span>
+                <input type="checkbox" id="IsAnonymity" value="1" name="IsAnonymity" /><label for="IsAnonymity">匿名</label>
+                <input type="checkbox" id="ToCarPartsType" value="2" name="ToCarPartsType" /><label for="ToCarPartsType">收藏汽配商</label>
+            </li>
+            <li><span style="text-align:right" class="left">描述：</span><textarea id="Remark" class="right" rows="8"></textarea></li>
+        </ul>
+        <div class="center" style="margin-top:50px;margin-bottom:20px;">
+            <input type="button" class="button" style="width:120px" value="保存" id="btnSave"/>
+            <input type="button" class="button" style="width:120px" value="返回" id="btnBack"/>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../JS/Ctrl/DatePicker/WdatePicker.js"></script> 
+    <script>
+        commonPageJsMng.initJs();
+        var inquiryEditJsMng = inquiryEditJsMng || {
+            init: function () {
+                var inqId = commonPageJsMng.GetUrlParms("inqId");
+                if (inqId != null && inqId != "" && inqId > 0) {
+                    $("#InquiryId").val(inqId);
+                    inquiryEditJsMng.loadData();
+                }
+                else {
+                    $("#InquiryId").val("");
+                    var inqDate = new Date(),
+                        inqDateStr = inqDate.getFullYear() + "-" + (inqDate.getMonth() + 1) + "-" + inqDate.getDate();
+                    $("#InquiryDateText").val(inqDateStr);
+                }
+                $("#btnSave").click(function () {
+                    inquiryEditJsMng.saveData();
+                });
+                $("#btnBack").click(function () {
+                    location.href = "InquiryMng.html";
+                });
+
+            },
+            loadData: function () {
+                var searchTxt = $("#InquiryId").val();
+                $("#ulInquiry").find("li span.right").each(function () {
+                    $(this).val("");
+                });
+                if (typeof (searchTxt) != "undefined") {
+                    $.dataManager.post({
+                        dataJson: {
+                            AccountId: $.cookie.get($.cst.cookie.accountId),
+                            Token: $.cookie.get($.cst.cookie.token),
+                            InqId: searchTxt
+                        },
+                        postUrl: "/Auth/Auth.svc/GetInquiryDetail",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            debugger;
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (msg.IsSuccess) {
+                                    var _dataDetail = jQuery.parseJSON(msg.Message);
+                                    if (typeof (_dataDetail) != "undefined" && _dataDetail != "null" && _dataDetail != "") {
+                                        for (var item in _dataDetail) {
+                                            if (_dataDetail[item] == "null")
+                                                $("#" + item).val("");
+                                        }
+                                    }
+                                }
+                                else {
+                                    if (msg.Code == -1000) {
+                                        alert(msg.Message);
+                                        location.href = "../MaintainFactory/Login.html";
+                                    }
+                                    else
+                                        alert(msg.Message);
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+            saveData: function () {
+                var checkResult = inquiryEditJsMng.saveDataCheck();
+                if (checkResult == 1) {
+                    var inqIdTxt = 0,
+                        isAnonymity = 0,
+                        toCarPartsType = 0;
+                    if ($.value.get("IsAnonymity") != "")
+                        isAnonymity = parseInt($.value.get("IsAnonymity"));
+                    if ($.value.get("ToCarPartsType") != "")
+                        toCarPartsType = parseInt($.value.get("ToCarPartsType"));
+                    if ($("#InquiryId").val() != "")
+                        inqIdTxt = $("#InquiryId").val()
+                    var jsonSave = '{"InquiryId":"' + inqIdTxt + '","InquiryDate":"' + $("#InquiryDateText").val()
+                        + '","VIN":"' + $("#VIN").val() + '","CarBrand":"' + $("#CarBrand").val() + '","CarType":"' + $("#CarType").val()
+                        + '","MaintainListImage":"' + $("#MaintainListImage").val() + '","PartsName":"' + $("#PartsName").val() + '","Quantity":"' + $("#Quantity").val()
+                        + '","PlanDeliveryDate":"' + $("#PlanDeliveryDateText").val() + '","State":"' + $.value.get("State") + '","Remark":"' + $("#Remark").val()
+                        + '","Alliance":"' + $("#Alliance").val() + '","CarPartsId":"' + $("#CarPartsId").val() + '","IsAnonymity":"' + isAnonymity
+                        + '","ToCarPartsType":"' + toCarPartsType + '"}';
+
+                    $.dataManager.post({
+                        dataJson: {
+                            AccountId: $.cookie.get($.cst.cookie.accountId),
+                            Token: $.cookie.get($.cst.cookie.token),
+                            saveRequest: jsonSave
+                        },
+                        postUrl: "/Auth/Auth.svc/SaveInquiry",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (!msg.IsSuccess)
+                                    alert("保存失败！");
+                                else {
+                                    alert("保存成功！");
+                                    location.href = "InquiryMng.html";
+                                }
+                            }
+                            else
+                                alert("保存失败！");
+                        }
+                    });
+                }
+            },
+            saveDataCheck: function () {
+                if ($("#CarBrand").val() == ""
+                    || $("#CarType").val() == ""
+                    || $("#MaintainListImage").val() == ""
+                    || $("#PartsName").val() == ""
+                    || $("#Quantity").val() == "") {
+                    alert("内容填写不完整！");
+                    return 0;
+                }
+                return 1;
+            },
+        }
+        inquiryEditJsMng.init();
+    </script>
+</body>
+</html>

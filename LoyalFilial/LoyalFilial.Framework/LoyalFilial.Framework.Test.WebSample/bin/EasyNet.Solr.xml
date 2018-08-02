@@ -1,0 +1,1272 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EasyNet.Solr</name>
+    </assembly>
+    <members>
+        <member name="T:EasyNet.Solr.AddOptions">
+            <summary>
+            添加或更新文档时的选项
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.AddOptions.Overwrite">
+            <summary>
+            是否覆盖相同键值的文档，默认为true
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.AddOptions.CommitWithin">
+            <summary>
+            在多少毫秒内提交添加或更新的文档
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.CommitOptions">
+            <summary>
+            提交命令选项
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.CommitOptions.WaitFlush">
+            <summary>
+            是否索引更新磁盘前一直阻塞，默认为true
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.CommitOptions.WaitSearcher">
+            <summary>
+            是否在新的检索器打开并注册到主查询检索器，索引变化前一直阻塞，默认为true
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.CommitOptions.SoftCommit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.CommitOptions.ExpungeDeletes">
+            <summary>
+            是否删除合并已标记删除的数据，默认为false
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.DoubleConverter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.DoubleConverter.ToDouble(System.Int64,EasyNet.Solr.Commons.DoubleConverter@)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="converter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.DoubleConverter.ToLong(System.Double,EasyNet.Solr.Commons.DoubleConverter@)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="converter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.FastInputStream">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.#ctor(System.IO.Stream,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+            <param name="bufferSize"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadByte">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.Read">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadUnsignedByte">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadBoolean">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadShort">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadUnsignedShort">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadChar">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadInt">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadLong">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadFully(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="b"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadFully(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="b"></param>
+            <param name="off"></param>
+            <param name="len"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadFloat">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.ReadDouble">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.Flush">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <summary>
+            
+            </summary>
+            <param name="offset"></param>
+            <param name="origin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.SetLength(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastInputStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="count"></param>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastInputStream.CanRead">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastInputStream.CanSeek">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastInputStream.CanWrite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastInputStream.Length">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastInputStream.Position">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.FastOutputStream">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.#ctor(System.IO.Stream,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+            <param name="bufferSize"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.Write(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="b"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.Write(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="b"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteBoolean(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteByte(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteShort(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteChar(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteInt(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteLong(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteFloat(System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteDouble(System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteBytes(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.WriteChars(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.Flush">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <summary>
+            
+            </summary>
+            <param name="offset"></param>
+            <param name="origin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.SetLength(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FastOutputStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="offset"></param>
+            <param name="count"></param>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastOutputStream.CanRead">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastOutputStream.CanSeek">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastOutputStream.CanWrite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastOutputStream.Length">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.FastOutputStream.Position">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.FloatConverter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FloatConverter.ToFloat(System.Int32,EasyNet.Solr.Commons.FloatConverter@)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="converter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.FloatConverter.ToInt(System.Single,EasyNet.Solr.Commons.FloatConverter@)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="converter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.JavaBinCodec">
+            The class is designed to optimaly serialize/deserialize any supported types in Solr response. As we know there are only a limited type of
+            items this class can do it with very minimal amount of payload and code. There are 15 known types and if there is an
+            object in the object tree which does not fall into these types, It must be converted to one of these. Implement an
+            ObjectResolver and pass it over It is expected that this class is used on both end of the pipes. The class has one
+            read method and one write method for each of the datatypes
+            <p/>
+            Note -- Never re-use an instance of this class for more than one marshal or unmarshall operation. Always create a new
+            instance.
+        </member>
+        <member name="T:EasyNet.Solr.ICodec">
+            <summary>
+            编解码器
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.ICodec.Marshal(System.Object,System.IO.Stream)">
+            <summary>
+            对对象进行编码，并输出到流
+            </summary>
+            <param name="obj">要进行编码的对象</param>
+            <param name="stream">输出流</param>
+        </member>
+        <member name="M:EasyNet.Solr.ICodec.Unmarshal(System.IO.Stream)">
+            <summary>
+            对流进行解码
+            </summary>
+            <param name="stream">要解码的流</param>
+            <returns>解码后的对象</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.JavaBinCodec.WriteStr(System.String)">
+            write the string as tag+length, with length being the number of UTF-8 bytes
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyNet.Solr.Commons.JavaBinCodec.WriteVInt(System.Int32,EasyNet.Solr.Commons.FastOutputStream)" -->
+        <member name="M:EasyNet.Solr.Commons.JavaBinCodec.ReadVInt(EasyNet.Solr.Commons.FastInputStream)">
+             The counterpart for {@link #writeVInt(int, FastOutputStream)}
+            
+             @ If there is a low-level I/O error.
+        </member>
+        <member name="M:EasyNet.Solr.Commons.LinkedHashMap`2.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyNet.Solr.Commons.LinkedHashMap`2"/> class that is empty, 
+            has the default initial capacity, and uses the default equality comparer for the key type.
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.LinkedHashMap`2.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyNet.Solr.Commons.LinkedHashMap`2"/> class that is empty, 
+            has the specified initial capacity, and uses the default equality comparer for the key type.
+            </summary>
+            <param name="capacity">The initial number of elements that the <see cref="T:EasyNet.Solr.Commons.LinkedHashMap`2"/> can contain.</param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.LinkedHashMap`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyNet.Solr.Commons.LinkedHashMap`2"/> class that is empty, has the default initial capacity, and uses the specified <see cref="T:System.Collections.Generic.IEqualityComparer`1"/>.
+            </summary>
+            <param name="equalityComparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> implementation to use when comparing keys, or null to use the default EqualityComparer for the type of the key.</param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.LinkedHashMap`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyNet.Solr.Commons.LinkedHashMap`2"/> class that is empty, has the specified initial capacity, and uses the specified <see cref="T:System.Collections.Generic.IEqualityComparer`1"/>.
+            </summary>
+            <param name="capacity">The initial number of elements that the <see cref="T:EasyNet.Solr.Commons.LinkedHashMap`2"/> can contain.</param>
+            <param name="equalityComparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> implementation to use when comparing keys, or null to use the default EqualityComparer for the type of the key.</param>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.NamedList">
+            <summary>
+            名称对象集合
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.NamedList`1">
+            <summary>
+            名称对象泛型集合
+            </summary>
+            <typeparam name="T">集合元素类型</typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.GetName(System.Int32)">
+            <summary>
+            获取名称
+            </summary>
+            <param name="index">位置</param>
+            <returns>名称</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.GetVal(System.Int32)">
+            <summary>
+            获取值
+            </summary>
+            <param name="index">位置</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.Add(System.String,`0)">
+            <summary>
+            添加元素
+            </summary>
+            <param name="name">名称</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.SetName(System.Int32,System.String)">
+            <summary>
+            设置名称
+            </summary>
+            <param name="index">位置</param>
+            <param name="name">名称</param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.SetValue(System.Int32,`0)">
+            <summary>
+            设置值
+            </summary>
+            <param name="index">位置</param>
+            <param name="value">值</param>
+            <returns>原有元素值</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.Remove(System.Int32)">
+            <summary>
+            移除元素
+            </summary>
+            <param name="index">位置</param>
+            <returns>移除元素值</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.IndexOf(System.String,System.Int32)">
+            <summary>
+            获取指定名称元素位置位置
+            </summary>
+            <param name="name">名称</param>
+            <param name="start">起始位置</param>
+            <returns>位置</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.Get(System.String)">
+            <summary>
+            获取指定名称元素值
+            </summary>
+            <param name="name">名称</param>
+            <returns>元素值</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.Get(System.String,System.Int32)">
+            <summary>
+            从指定位置起获取指定名称元素
+            </summary>
+            <param name="name">名称</param>
+            <param name="start">其实位置</param>
+            <returns>元素值</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.GetAll(System.String)">
+            <summary>
+            获取所有指定名称的元素
+            </summary>
+            <param name="name">名称</param>
+            <returns>符合条件的元素集合</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.AddAll(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,`0}})">
+            <summary>
+            添加迭代元素
+            </summary>
+            <param name="args">迭代元素</param>
+            <returns>添加元素数量是否大于0</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.AddAll(EasyNet.Solr.Commons.NamedList{`0})">
+            <summary>
+            添加名称集合
+            </summary>
+            <param name="namedList">名称集合</param>
+            <returns>名称计划数量</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.NamedList`1.Remove(System.String)">
+            <summary>
+            移除指定名称元素
+            </summary>
+            <param name="name">名称</param>
+            <returns>移除元素</returns>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.NamedList`1.Count">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.SimpleOrderedMap">
+            <summary>
+            简单排序集合
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.SimpleOrderedMap`1">
+            <summary>
+            简单排序泛型集合
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.SolrDocument">
+            <summary>
+            Solr返回文档
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrDocument.GetFieldNames">
+            <summary>
+            所有字段名称集合
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrDocument.RemoveFields(System.String)">
+            <summary>
+            根据字段名称移除字段
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrDocument.SetField(System.String,System.Object)">
+            <summary>
+            设置字段值
+            </summary>
+            <param name="name">字段名称</param>
+            <param name="value">字段值</param>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.SolrDocumentList">
+            <summary>
+            Solr返回文档集合
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.SolrDocumentList.NumFound">
+            <summary>
+            符合条件的记录数
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.SolrDocumentList.Start">
+            <summary>
+            起始记录
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.SolrDocumentList.MaxScore">
+            <summary>
+            最大评分
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.SolrInputDocument">
+            <summary>
+            Solr输入文档
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrInputDocument.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.SolrInputDocument.Boost">
+            <summary>
+            文档评分
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Commons.SolrInputField">
+            <summary>
+            Solr输入文档字段
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrInputField.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="name">字段名称</param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrInputField.#ctor(System.String,System.Object)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="name">字段名称，字段值</param>
+            <param name="value"></param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrInputField.#ctor(System.String,System.Object,System.Nullable{System.Single})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="name">字段名称</param>
+            <param name="value">字段值</param>
+            <param name="boost">字段评分</param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrInputField.SetValue(System.Object,System.Nullable{System.Single})">
+            <summary>
+            设置字段值
+            </summary>
+            <param name="value">字段值</param>
+            <param name="boost">评分</param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrInputField.AddValue(System.Object,System.Nullable{System.Single})">
+            <summary>
+            添加字段值
+            </summary>
+            <param name="value">字段值</param>
+            <param name="boost">评分</param>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrInputField.GetValues">
+            <summary>
+            获取字段值
+            </summary>
+            <returns>字段值集合</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Commons.SolrInputField.GetValueCount">
+            <summary>
+            获取字段值数量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.SolrInputField.Name">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.SolrInputField.Value">
+            <summary>
+            字段值
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Commons.SolrInputField.Boost">
+            <summary>
+            字段评分
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.FacetField">
+            <summary>
+            Facet.Field查询结果项
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.FacetField.Name">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.FacetField.Count">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.ICodecFactory">
+            <summary>
+            编解码工厂
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.ICodecFactory.Create">
+            <summary>
+            创建编解码器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.BinaryCodecFactory">
+            <summary>
+            二进制格式编解码器工厂
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.BinaryCodecFactory.Create">
+            <summary>
+            创建编解码器
+            </summary>
+            <returns>javabin格式编解码器</returns>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.BinaryFacetFieldsParser">
+            <summary>
+            二进制格式返回数据Facet.Field解析器
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.ISolrResponseParser`2">
+            <summary>
+            Solr返回解析器泛型接口
+            </summary>
+            <typeparam name="ST">ST类型返回数据</typeparam>
+            <typeparam name="DT">DT类型要解析为的数据</typeparam>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.BinaryFacetQueriesParser">
+            <summary>
+            二进制格式返回数据Facet.Query解析器
+            </summary>
+            
+        </member>
+        <member name="T:EasyNet.Solr.Impl.BinaryHighlightingParser">
+            <summary>
+            二进制格式返回数据高亮解析器
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.BinaryQueryResultsParser`1">
+            <summary>
+            二进制格式返回数据查询结果解析器
+            </summary>
+            <typeparam name="T">查询结果类型</typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.BinaryQueryResultsParser`1.#ctor(EasyNet.Solr.IObjectDeserializer{`0})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="objectDeserialize">对象反序列化器</param>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.BinaryQueryResultsParser`1.Parse(EasyNet.Solr.Commons.NamedList)">
+            <summary>
+            解析
+            </summary>
+            <param name="result">名称对象集合</param>
+            <returns>查询结果</returns>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.BinaryResponseHeaderParser">
+            <summary>
+            二进制格式返回数据头解析器
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.BinaryResponseHeaderParser.Parse(EasyNet.Solr.Commons.NamedList)">
+            <summary>
+            解析
+            </summary>
+            <param name="result">名称对象集合</param>
+            <returns>结果头信息</returns>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.BinaryUpdateParametersConvert">
+            <summary>
+            二进制Solr更新参数转换器
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.IUpdateParametersConvert`1">
+            <summary>
+            Solr更新操作参数选项转换器泛型接口
+            </summary>
+            <typeparam name="T">转换为的数据类型</typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.IUpdateParametersConvert`1.ConvertUpdateParameters(EasyNet.Solr.UpdateOptions)">
+            <summary>
+            转换更新操作参数
+            </summary>
+            <param name="updateOptions">更新选项</param>
+            <returns>T类型数据</returns>
+        </member>
+        <member name="M:EasyNet.Solr.IUpdateParametersConvert`1.ConvertRollbackParameters">
+            <summary>
+            转换回退参数
+            </summary>
+            <returns>T类型数据</returns>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.RuntimeCache`1">
+            <summary>
+            运行时缓存
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:EasyNet.Solr.ISolrCache`1">
+            <summary>
+            Solr缓存泛型接口
+            </summary>
+            <typeparam name="T">缓存对象类型</typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.ISolrCache`1.Add(EasyNet.Solr.SolrCacheEntity{`0})">
+            <summary>
+            添加对象到缓存
+            </summary>
+            <param name="entity">Solr缓存实体</param>
+        </member>
+        <member name="P:EasyNet.Solr.ISolrCache`1.Item(System.String)">
+            <summary>
+            根据url获取Solr缓存的对象
+            </summary>
+            <param name="url"></param>
+            <returns>Solr缓存实体</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.RuntimeCache`1.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.RuntimeCache`1.SlidingMinutes">
+            <summary>
+            滑动过期时间，以分钟为单位，默认为5分钟
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.SolrQuery">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.ISolrQuery">
+            <summary>
+            Solr查询接口
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.ISolrQuery.Query">
+            <summary>
+            查询字符串
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.Impl.SolrQuery.All">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrQuery.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="query"></param>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrQuery.Query">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.SolrQueryOperations`1">
+            <summary>
+            Solr查询操作
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:EasyNet.Solr.ISolrQueryOperations`1">
+            <summary>
+            Solr查询操作泛型接口
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.ISolrQueryOperations`1.Query(System.String,System.String,EasyNet.Solr.ISolrQuery,System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+            <summary>
+            查询
+            </summary>
+            <param name="collection">Solr collection</param>
+            <param name="handler">查询地址</param>
+            <param name="query">Solr查询</param>
+            <param name="options">查询参数</param>
+            <returns>T类型数据</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrQueryOperations`1.#ctor(EasyNet.Solr.ISolrQueryConnection{`0})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connection">Solr链接</param>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrQueryOperations`1.Query(System.String,System.String,EasyNet.Solr.ISolrQuery,System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+            <summary>
+            查询
+            </summary>
+            <param name="collection">Solr collection</param>
+            <param name="handler">查询地址</param>
+            <param name="query">Solr查询</param>
+            <param name="options">查询参数</param>
+            <returns>T类型数据</returns>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrQueryOperations`1.ResponseWriter">
+            <summary>
+            Solr的wt参数
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.SolrQueryConnection`1">
+            <summary>
+            Solr readonly connection,used to query
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:EasyNet.Solr.ISolrQueryConnection`1">
+            <summary>
+            Solr只读连接
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.ISolrQueryConnection`1.Get(System.String,System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+            <summary>
+            GET请求
+            </summary>
+            <param name="relativeUrl">相对地址</param>
+            <param name="parameters">参数</param>
+            <returns>T类型数据</returns>
+        </member>
+        <member name="P:EasyNet.Solr.ISolrQueryConnection`1.ServerUrl">
+            <summary>
+            服务地址
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrQueryConnection`1.#ctor">
+            <summary>
+            默认构造函数
+            设置ResponseCodecFactory为BinaryCodecFactory
+            设置Cache为RuntimeCache
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrQueryConnection`1.Get(System.String,System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+            <summary>
+            GET请求
+            </summary>
+            <param name="relativeUrl">相对地址</param>
+            <param name="parameters">参数</param>
+            <returns>T类型数据</returns>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrQueryConnection`1.ServerUrl">
+            <summary>
+            服务地址
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrQueryConnection`1.ResponseCodecFactory">
+            <summary>
+            用于读取返回数据的编解码器
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrQueryConnection`1.Cache">
+            <summary>
+            缓存
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrQueryConnection`1.KeepAlive">
+            <summary>
+            HttpWebRequest的KeepAlive属性
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrQueryConnection`1.ReadWriteTimeout">
+            <summary>
+            HttpWebRequest的ReadWriteTimeout属性
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrQueryConnection`1.Timeout">
+            <summary>
+            HttpWebRequest的Timeout属性
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.SolrUpdateConnection`2">
+            <summary>
+            Solr更新操作泛型类
+            </summary>
+            <typeparam name="IT">输入数据类型</typeparam>
+            <typeparam name="OT">输出数据类型</typeparam>
+        </member>
+        <member name="T:EasyNet.Solr.ISolrUpdateConnection`2">
+            <summary>
+            Solr链接泛型接口
+            </summary>
+            <typeparam name="IT">输入的数据类型</typeparam>
+            <typeparam name="OT">输出的数据类型</typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.ISolrUpdateConnection`2.Post(System.String,`0,System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+            <summary>
+            Post请求
+            </summary>
+            <param name="relativeUrl">相对地址</param>
+            <param name="data">IT类型数据</param>
+            <param name="parameters">参数</param>
+            <returns>OT类型数据</returns>
+        </member>
+        <member name="P:EasyNet.Solr.ISolrUpdateConnection`2.ServerUrl">
+            <summary>
+            服务地址
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrUpdateConnection`2.#ctor">
+            <summary>
+            默认构造函数
+            设置RequestCodecFactory、ResponseCodecFactory为BinaryCodecFactory
+            设置ReadWriteTimeout、Timeout为int.MaxValue
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrUpdateConnection`2.Post(System.String,`0,System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.ICollection{System.String}})">
+            <summary>
+            POST请求
+            </summary>
+            <param name="relativeUrl">相对地址</param>
+            <param name="data">IT类型数据</param>
+            <param name="parameters">参数</param>
+            <returns>OT类型数据</returns>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrUpdateConnection`2.ServerUrl">
+            <summary>
+            服务地址
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrUpdateConnection`2.RequestCodecFactory">
+            <summary>
+            用于读取返回数据的编解码器
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrUpdateConnection`2.ResponseCodecFactory">
+            <summary>
+            用于写入数据的编解码器
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrUpdateConnection`2.ContentType">
+            <summary>
+            HttpWebRequest的ContentType属性
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrUpdateConnection`2.KeepAlive">
+            <summary>
+            HttpWebRequest的KeepAlive属性
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrUpdateConnection`2.ReadWriteTimeout">
+            <summary>
+            HttpWebRequest的ReadWriteTimeout属性
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrUpdateConnection`2.Timeout">
+            <summary>
+            HttpWebRequest的Timeout属性
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.Impl.SolrUpdateOperations`2">
+            <summary>
+            Solr更新操作
+            </summary>
+            <typeparam name="IT">输入数据类型</typeparam>
+            <typeparam name="OT">输出数据类型</typeparam>
+        </member>
+        <member name="T:EasyNet.Solr.ISolrUpdateOperations`1">
+            <summary>
+            Solr更新操作泛型接口
+            </summary>
+            <typeparam name="T">返回结果数据类型</typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.ISolrUpdateOperations`1.Update(System.String,System.String,EasyNet.Solr.UpdateOptions)">
+            <summary>
+            更新操作
+            </summary>
+            <param name="collection">Solr collection</param>
+            <param name="handler">更新地址</param>
+            <param name="updateOptions">更新选项</param>
+            <returns>T类型返回数据</returns>
+        </member>
+        <member name="M:EasyNet.Solr.ISolrUpdateOperations`1.Rollback(System.String,System.String)">
+            <summary>
+            回退
+            </summary>
+            <param name="collection">Solr collection</param>
+            <param name="handler">handler</param>
+            <returns>T类型数据</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrUpdateOperations`2.#ctor(EasyNet.Solr.ISolrUpdateConnection{`0,`1},EasyNet.Solr.IUpdateParametersConvert{`0})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connection">Solr更新连接</param>
+            <param name="updateParametersConvert">更新操作参数转换器</param>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrUpdateOperations`2.Update(System.String,System.String,EasyNet.Solr.UpdateOptions)">
+            <summary>
+            更新操作
+            </summary>
+            <param name="collection">Solr collection</param>
+            <param name="handler">更新地址</param>
+            <param name="updateOptions">更新选项</param>
+            <returns>OT类型返回数据</returns>
+        </member>
+        <member name="M:EasyNet.Solr.Impl.SolrUpdateOperations`2.Rollback(System.String,System.String)">
+            <summary>
+            回退
+            </summary>
+            <param name="collection">Solr collection</param>
+            <param name="handler">更新操作</param>
+            <returns>OT类型数据</returns>
+        </member>
+        <member name="P:EasyNet.Solr.Impl.SolrUpdateOperations`2.ResponseWriter">
+            <summary>
+            Solr的wt参数
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.IObjectDeserializer`1">
+            <summary>
+            反序列化泛型接口
+            </summary>
+            <typeparam name="T">反序列化后对象的类型</typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.IObjectDeserializer`1.Deserialize(EasyNet.Solr.Commons.SolrDocumentList)">
+            <summary>
+            对Solr文档反序列化
+            </summary>
+            <param name="result">Solr文档</param>
+            <returns>迭代对象</returns>
+        </member>
+        <member name="T:EasyNet.Solr.IObjectSerializer`1">
+            <summary>
+            序列化接口
+            </summary>
+            <typeparam name="T">要进行序列化的对象的类型</typeparam>
+        </member>
+        <member name="M:EasyNet.Solr.IObjectSerializer`1.Serialize(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            对象序列化
+            </summary>
+            <param name="objs">要进行序列化的迭代对象</param>
+            <returns>Solr输入文档集合</returns>
+        </member>
+        <member name="T:EasyNet.Solr.OptimizeOptions">
+            <summary>
+            优化命令选项
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.OptimizeOptions.WaitFlush">
+            <summary>
+            是否索引更新磁盘前一直阻塞，默认为true
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.OptimizeOptions.WaitSearcher">
+            <summary>
+            是否在新的检索器打开并注册到主查询检索器，索引变化前一直阻塞，默认为true
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.OptimizeOptions.SoftCommit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:EasyNet.Solr.OptimizeOptions.MaxSegments">
+            <summary>
+            优化索引的段数，默认为1
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.QueryResults`1">
+            <summary>
+            查询结果泛型类
+            </summary>
+            <typeparam name="T">查询结果数据类型</typeparam>
+        </member>
+        <member name="P:EasyNet.Solr.QueryResults`1.NumFound">
+            <summary>
+            符合条件的结果数量
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.QueryResults`1.MaxScore">
+            <summary>
+            最大评分
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.ResponseHeader">
+            <summary>
+            反回头信息
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.ResponseHeader.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.ResponseHeader.QTime">
+            <summary>
+            花费时间
+            </summary>
+        </member>
+        <member name="M:EasyNet.Solr.SolrCacheEntity`1.#ctor(System.String,System.String,`0)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="url">地址</param>
+            <param name="eTag">ETag名称</param>
+            <param name="data">数据</param>
+        </member>
+        <member name="P:EasyNet.Solr.SolrCacheEntity`1.Url">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.SolrCacheEntity`1.ETag">
+            <summary>
+            ETag名称
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.SolrCacheEntity`1.Data">
+            <summary>
+            T类型数据
+            </summary>
+        </member>
+        <member name="T:EasyNet.Solr.UpdateOptions">
+            <summary>
+            Solr更新操作选项
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.UpdateOptions.Docs">
+            <summary>
+            Solr输入文档迭代器
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.UpdateOptions.AddOptions">
+            <summary>
+            更新文档选项
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.UpdateOptions.CommitOptions">
+            <summary>
+            提交选项
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.UpdateOptions.OptimizeOptions">
+            <summary>
+            优化选项
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.UpdateOptions.DelById">
+            <summary>
+            删除的Id迭代器
+            </summary>
+        </member>
+        <member name="P:EasyNet.Solr.UpdateOptions.DelByQ">
+            <summary>
+            删除查询迭代器
+            </summary>
+        </member>
+    </members>
+</doc>

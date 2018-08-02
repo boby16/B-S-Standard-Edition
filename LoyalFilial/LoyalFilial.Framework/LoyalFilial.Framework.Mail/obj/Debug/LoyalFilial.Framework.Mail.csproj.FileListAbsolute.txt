@@ -1,0 +1,7 @@
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Mail\bin\Debug\LoyalFilial.Framework.Mail.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Mail\bin\Debug\LoyalFilial.Framework.Mail.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Mail\bin\Debug\LoyalFilial.Framework.Core.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Mail\bin\Debug\LoyalFilial.Framework.Core.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Mail\obj\Debug\LoyalFilial.Framework.Mail.csprojResolveAssemblyReference.cache
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Mail\obj\Debug\LoyalFilial.Framework.Mail.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Mail\obj\Debug\LoyalFilial.Framework.Mail.pdb

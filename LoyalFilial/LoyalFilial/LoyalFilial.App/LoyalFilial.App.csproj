@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0239A4FC-4213-4E6F-930C-0AE065817055}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoyalFilial.App</RootNamespace>
+    <AssemblyName>LoyalFilial.App</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CarParts\CarPartsEdit.html" />
+    <Content Include="CarParts\CarPartsDetail.html" />
+    <Content Include="CarParts\DeliverMng.html" />
+    <Content Include="CarParts\OrderMng.html" />
+    <Content Include="Css\PopUp.css" />
+    <Content Include="Customer\CustomerEdit.html" />
+    <Content Include="Customer\CustomerMng.html" />
+    <Content Include="JS\Common\jquery.md5.js" />
+    <Content Include="JS\Ctrl\DatePicker\calendar.js" />
+    <Content Include="JS\Ctrl\DatePicker\lang\en.js" />
+    <Content Include="JS\Ctrl\DatePicker\lang\zh-cn.js" />
+    <Content Include="JS\Ctrl\DatePicker\lang\zh-tw.js" />
+    <Content Include="JS\Ctrl\DatePicker\skin\datePicker.gif" />
+    <Content Include="JS\Ctrl\DatePicker\skin\default\datepicker.css" />
+    <Content Include="JS\Ctrl\DatePicker\skin\default\img.gif" />
+    <Content Include="JS\Ctrl\DatePicker\skin\WdatePicker.css" />
+    <Content Include="JS\Ctrl\DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="JS\Ctrl\DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="JS\Ctrl\DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="JS\Ctrl\DatePicker\WdatePicker.js" />
+    <Content Include="MaintainFactory\CustomerDetail.html" />
+    <Content Include="MaintainFactory\InquiryEdit.html" />
+    <Content Include="MaintainFactory\PurchaseMng.html" />
+    <Content Include="CarParts\QuotationMng.html" />
+    <Content Include="MaintainFactory\InquiryMng.html" />
+    <Content Include="MaintainFactory\SendCustSMS.html" />
+    <Content Include="MaintainFactory\CustomerEdit.html" />
+    <Content Include="MaintainFactory\ReserveEdit.html" />
+    <Content Include="MaintainFactory\MaintainEdit.html" />
+    <Content Include="MaintainFactory\CustomerMng.html" />
+    <Content Include="MaintainFactory\ReserveMng.html" />
+    <Content Include="MaintainFactory\MaintainMng.html" />
+    <Content Include="MaintainFactory\CarPartsSearch.html" />
+    <Content Include="Css\Base.css" />
+    <Content Include="Css\Main.css" />
+    <Content Include="Css\scrollbar.css" />
+    <Content Include="Images\index_1.png" />
+    <Content Include="Images\index_10.png" />
+    <Content Include="Images\index_11.png" />
+    <Content Include="Images\index_12.png" />
+    <Content Include="Images\index_13.png" />
+    <Content Include="Images\index_14.png" />
+    <Content Include="Images\index_2.png" />
+    <Content Include="Images\index_3.png" />
+    <Content Include="Images\index_4.png" />
+    <Content Include="Images\index_5.png" />
+    <Content Include="Images\index_6.png" />
+    <Content Include="Images\index_7.png" />
+    <Content Include="Images\index_8.png" />
+    <Content Include="Images\index_9.png" />
+    <Content Include="Images\login_1.png" />
+    <Content Include="Home\Error.html" />
+    <Content Include="Home\Index.html" />
+    <Content Include="CarParts\Login.html" />
+    <Content Include="CarParts\Register.html" />
+    <Content Include="JS\Page\CommonPage.js" />
+    <Content Include="MaintainFactory\Register.html" />
+    <Content Include="MaintainFactory\Login.html" />
+    <Content Include="JS\Business\BusinessControl.js" />
+    <Content Include="JS\Common\hhSwipe.js" />
+    <Content Include="JS\Common\iscroll.js" />
+    <Content Include="JS\Common\Jquery-1.10.2.min.js" />
+    <Content Include="JS\Common\Jquery-2.1.1.min.js" />
+    <Content Include="JS\Common\jscharts.js" />
+    <Content Include="JS\FrameWork\AnimatControl.js" />
+    <Content Include="JS\FrameWork\CheckControl.js" />
+    <Content Include="JS\FrameWork\DataControl.js" />
+    <Content Include="JS\FrameWork\Main.js" />
+    <Content Include="JS\FrameWork\PageControl.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5880/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,241 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>汽修用户注册</title>
+    <meta charset="UTF-8">
+    <link href="../Css/Main.css" rel="stylesheet">
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Common/jquery.md5.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="center" style="width:1000px">
+        <script>commonPageJsMng.initHeaderMenu();</script>
+
+        <div class="body">
+            <div class="left" style="float:left;">
+                <img src="../Images/login_1.png" style="width:500px; height:350px" />
+            </div>
+            <div class="right">
+                <div class="login" id="divRegister1">
+                    <div>
+                        <p>汽修厂用户注册</p>
+                    </div>
+                    <div style="padding-right:30px">
+                        <ul>
+                            <li><span>手机号</span><br /><input type="text" maxlength="11" class="text" id="txtPhoneNo" /></li>
+                            <li>
+                                <span>验证码</span><br /><input style="width:150px" type="text" maxlength="20" class="text" id="txtAuthCode" />
+                                <input type="button" class="button" value="获取验证码" style="width:80px; font-size:12px" id="btnAuthCode" onclick="registerMtJsMng.genAuthCode();" />
+                            </li>
+                            <li><span>输入密码</span><br /><input type="password" maxlength="20" class="text" id="txtPwd" /></li>
+                            <li><span>再次输入密码</span><br /><input type="password" maxlength="20" class="text" id="txtPwdConfirm" /></li>
+                        </ul>
+                        <div>
+                            <input type="button" id="btnNext" value="下 一 步" class="button" />
+                        </div>
+                        <div style="margin-top:20px">
+                            <a href="Login.html" class="link">已有账号，请登录</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login" style="display:none; height:650px; width:400px" id="divRegister2">
+                    <div>
+                        <ul>
+                            <li><span>公司：</span><span style="color:red">*</span><br /><input class="text" type="text" id="MaintainFactoryName" maxlength="20" /></li>
+                            <li><span>城市：</span><span style="color:red">*</span><br /><input class="text" type="text" id="CityName" maxlength="20" /></li>
+                            <li><span>地址：</span><span style="color:red">*</span><br /><input class="text" type="text" id="Address" maxlength="20" /></li>
+                            <li><span>电话：</span><br /><input class="text" type="text" id="TelNo" maxlength="20" /></li>
+                            <li><span>手机：</span><span style="color:red">*</span><br /><input class="text" type="text" id="MobilePhone" maxlength="20" /></li>
+                            <li><span>联系人：</span><span style="color:red">*</span><br /><input class="text" type="text" id="ContactName" maxlength="20" /></li>
+                            <li><span>联盟：</span><br /><input class="text" type="text" id="Alliance" maxlength="20" /></li>
+                            <li style="height:auto;">
+                                <span>主营：</span><span style="color:red">*</span><br />
+                                <ul class="zhuyin">
+                                    <li class="li"><input type="checkbox" value="洗车" id="cb1" /><label for="cb1">洗车</label></li>
+                                    <li class="li"><input type="checkbox" value="保养" id="cb2" /><label for="cb2">保养</label></li>
+                                    <li class="li"><input type="checkbox" value="快修" id="cb3" /><label for="cb3">快修</label></li>
+                                    <li class="li"><input type="checkbox" value="钣金" id="cb4" /><label for="cb4">钣金</label></li>
+                                    <li class="li"><input type="checkbox" value="喷漆" id="cb5" /><label for="cb5">喷漆</label></li>
+                                    <li class="li"><input type="checkbox" value="维修" id="cb6" /><label for="cb6">维修</label></li>
+                                    <li class="li"><input type="checkbox" value="道路救援" id="cb7" /><label for="cb7">道路救援</label></li>
+                                    <li class="li"><input type="checkbox" value="补胎" id="cb8" /><label for="cb8">补胎</label></li>
+                                    <li class="li"><input type="checkbox" value="换胎" id="cb9" /><label for="cb9">换胎</label></li>
+                                    <li class="li"><input type="checkbox" value="动平衡" id="cb10" /><label for="cb10">动平衡</label></li>
+                                    <li class="li"><input type="checkbox" value="四轮定位" id="cb11" /><label for="cb11">四轮定位</label></li>
+                                    <li class="li"><input type="checkbox" value="美容" id="cb12" /><label for="cb12">美容</label></li>
+                                    <li class="li"><input type="checkbox" value="改装" id="cb13" /><label for="cb13">改装</label></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div>
+                            <input type="button" id="btnRegiste" value="注 册" class="button" />
+                        </div>
+                        <div style="margin-top:20px">
+                            <a href="Login.html" class="link">已有账号，请登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>commonPageJsMng.initFooter();</script>
+    </div>
+
+    <script>
+        var registerMtJsMng = registerMtJsMng || {
+            init: function () {
+                $("#btnNext").click(function () {
+                    registerMtJsMng.register();
+                });
+                $("#btnRegiste").click(function () {
+                    registerMtJsMng.saveBasic();
+                });
+            },
+            genAuthCode: function () {
+                var phoneNo = parseInt($("#txtPhoneNo").val(), 10);
+                if (typeof (phoneNo) != "undefined" && phoneNo > 13000000000) {
+                    $("#btnAuthCode").attr("disabled", "disabled");
+                    $("#btnAuthCode").addClass("disabled");
+                    $.dataManager.post({
+                        dataJson: { phoneNo: phoneNo },
+                        postUrl: "/Auth/Auth.svc/GenerateSMSAuthCode",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (!msg.IsSuccess)
+                                    alert("验证码获取失败，请重新获取！");
+                            }
+                            $("#btnAuthCode").removeAttr("disabled");
+                            $("#btnAuthCode").removeClass("disabled");
+                        }
+                    });
+                    window.setTimeout(function () {
+                        $("#btnAuthCode").removeAttr("disabled");
+                        $("#btnAuthCode").removeClass("disabled");
+                    }, 600);
+                }
+                else {
+                    alert("手机号码错误！")
+                }
+            },
+            registerCheck: function () {
+                if ($("#txtAuthCode").val() == "") {
+                    alert("验证码不能为空！");
+                    return false;
+                }
+                else if ($("#txtPwd").val() == "") {
+                    alert("密码不能为空！");
+                    return false;
+                }
+                else if ($("#txtPwdConfirm").val() == "") {
+                    alert("确认密码不能为空！");
+                    return false;
+                }
+                else if ($("#txtPwd").val() != $("#txtPwdConfirm").val()) {
+                    alert("两次密码不相同，请重新输入！");
+                    return false;
+                }
+                else if ($("#txtPwd").val().length < 6) {
+                    alert("密码不能少于6位！");
+                    return false;
+                }
+                else return true;
+            },
+            register: function () {
+                if (registerMtJsMng.registerCheck()) {
+                    var phoneNo = parseInt($("#txtPhoneNo").val(), 10);
+                    var pwd = $.md5($("#txtPwd").val());
+                    if (typeof (phoneNo) != "undefined" && phoneNo > 13000000000) {
+                        $.dataManager.post({
+                            dataJson: { accountId: phoneNo, mobileNo: phoneNo, password: pwd, authCode: $("#txtAuthCode").val(), userType: 1 },
+                            postUrl: "/Auth/Auth.svc/Register",
+                            needLoading: false,
+                            afterFun: function (msg) {
+                                if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                    if (!msg.IsSuccess) {
+                                        alert("注册失败，请重新填写！");
+                                        return false;
+                                    }
+                                    else {
+                                        $("#divRegister2").css('display', 'inline-block');
+                                        $("#divRegister1").hide();
+                                    }
+                                }
+                                else {
+                                    alert("注册失败，请重新填写！");
+                                    return false;
+                                }
+                            }
+                        });
+                        window.setTimeout(function () {
+                            $("#btnAuthCode").removeAttr("disabled");
+                            $("#btnAuthCode").removeClass("disabled");
+                        }, 300);
+                    }
+                    else {
+                        alert("手机号码错误！")
+                        return false;
+                    }
+                }
+            },
+            saveBasic: function () {
+                var checkResult = registerMtJsMng.saveBasicCheck();
+                if (checkResult != "0") {
+
+                    var jsonSave = '{"UserId":"' + $("#txtPhoneNo").val() + '","MaintainName":"' + $("#MaintainFactoryName").val() + '","CityName":"' + $("#CityName").val() + '","Address":"' + $("#Address").val()
+                        + '","MobileNo":"' + $("#MobilePhone").val() + '","ContactName":"' + $("#ContactName").val() + '","TelNo":"' + $("#TelNo").val()
+                        + '","MainServices":"' + checkResult + '","Alliance":"' + $("#Alliance").val() + '"}';
+
+                    $.dataManager.post({
+                        dataJson: { saveRequest: jsonSave },
+                        postUrl: "/Auth/Auth.svc/SaveMaintainInfo",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (!msg.IsSuccess)
+                                    alert("注册失败！");
+                                else {
+                                    alert("注册成功！");
+                                    location.href = "Login.html";
+                                }
+                            }
+                            else
+                                alert("注册失败！");
+                        }
+                    });
+                }
+            },
+            saveBasicCheck: function () {
+                if ($("#MaintainFactoryName").val() == ""
+                    || $("#CityName").val() == ""
+                    || $("#Address").val() == ""
+                    || $("#MobilePhone").val() == ""
+                    || $("#ContactName").val() == "") {
+                    alert("内容填写不完整！");
+                    return "0";
+                }
+                else {
+                    var zhuyinCkbArr = $(".zhuyin").find("input:checkbox:checked");
+                    if (zhuyinCkbArr.length > 0) {
+                        var zhuyinstr = "";
+                        zhuyinCkbArr.each(function (i, item) {
+                            if (zhuyinstr.length > 0) zhuyinstr += ",";
+                            zhuyinstr += $(item).val();
+                        });
+                        return zhuyinstr;
+                    }
+                    else {
+                        alert("主营不能为空！");
+                        return "0";
+                    }
+                }
+            },
+        };
+        registerMtJsMng.init();
+    </script>
+</body>
+</html>

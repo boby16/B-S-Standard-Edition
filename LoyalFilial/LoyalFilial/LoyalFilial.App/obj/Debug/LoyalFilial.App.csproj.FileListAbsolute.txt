@@ -1,0 +1,6 @@
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.App\bin\LoyalFilial.App.dll.config
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.App\bin\LoyalFilial.App.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.App\bin\LoyalFilial.App.pdb
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.App\obj\Debug\LoyalFilial.App.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.App\obj\Debug\LoyalFilial.App.pdb
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.App\obj\Debug\LoyalFilial.App.csprojResolveAssemblyReference.cache

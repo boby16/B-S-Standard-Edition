@@ -1,0 +1,15 @@
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\obj\Debug\LoyalFilial.BizCommon.csprojResolveAssemblyReference.cache
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.BizCommon.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.BizCommon.pdb
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.Common.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.Entity.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.Framework.Core.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\MySql.Data.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\Newtonsoft.Json.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.Framework.Data.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.Common.pdb
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.Entity.pdb
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.Framework.Core.pdb
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\bin\Debug\LoyalFilial.Framework.Data.pdb
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\obj\Debug\LoyalFilial.BizCommon.dll
+D:\Work\LoyalFilial\LoyalFilial\LoyalFilial.BizCommon\obj\Debug\LoyalFilial.BizCommon.pdb

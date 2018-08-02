@@ -1,0 +1,17 @@
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Test.dll.config
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Test.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Test.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Core.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Data.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Data.MySql.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Log.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\MySql.Data.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\log4net.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Data.MySql.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Data.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Log.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\LoyalFilial.Framework.Core.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\bin\Debug\log4net.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\obj\Debug\LoyalFilial.Framework.Test.csprojResolveAssemblyReference.cache
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\obj\Debug\LoyalFilial.Framework.Test.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Test\obj\Debug\LoyalFilial.Framework.Test.pdb

@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>询价管理</title>
+    <link href="../Css/Main.css" rel="stylesheet" />
+    <link href="../Css/PopUp.css" rel="stylesheet" />
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="center" style="width: 1000px">
+        <script>commonPageJsMng.initHeaderMenu();</script>
+
+        <div class="body">
+            <div>
+                <div class="condition">
+                    <div>
+                        <span class="lable">询价单号</span>
+                        <input type="text" id="txtInquiryId" class="text" style="width:150px" />
+                    </div>
+                    <div>
+                        <span class="lable">状态</span>
+                        <select id="selState">
+                            <option value="">所有</option>
+                            <option value="-1">作废</option>
+                            <option value="0">制作中</option>
+                            <option value="1">有效</option>
+                            <option value="2">已成交</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="lable">询价日期</span>
+                        <input type="text" id="txtInquiryDateStart" class="text" style="width:150px" onclick="WdatePicker()" />
+                        <span style="width:20px">--</span>
+                        <input type="text" id="txtInquiryDateEnd" class="text" style="width:150px" onclick="WdatePicker()" />
+                    </div>
+                    <div>
+                        <input class="button" type="button" value="查  询" style="width:120px" id="btnSearch" />
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div style="float:right;">
+                    <input class="button" type="button" value="新    增" style="width:120px" id="btnNew" />
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="list">
+                <table>
+                    <tr>
+                        <th width="80px">询价单号</th>
+                        <th width="80px">询价日期</th>
+                        <th>品牌</th>
+                        <th>车型</th>
+                        <th>配件</th>
+                        <th>数量</th>
+                        <th>描述</th>
+                        <th>状态</th>
+                        <th width="80px">报价条数</th>
+                        <th style="width:100px">操作</th>
+                    </tr>
+                    <tbody id="inquiryList"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>commonPageJsMng.initFooter();</script>
+    </div>
+
+    <!--popup  start-->
+    <div class="pop_main" id="popUp_Purchase">
+        <div class="pop_fullbg"></div>
+        <div class="pop_dialog" style="height:400px; width:500px">
+            <p class="pop_close"><a href="#">关闭</a></p>
+            <div>
+                <div class="list" style="height:300px;">
+                    <table style="width:500px;">
+                        <tr>
+                            <th width="80px">询价单号</th>
+                            <th width="80px">供应商</th>
+                            <th width="80px">报价</th>
+                            <th width="80px">转采购单</th>
+                        </tr>
+                        <tbody id="quotationList"></tbody>
+                    </table>
+                </div>
+                <div style="text-align:center; vertical-align:bottom">
+                    <input class="button" type="button" value="提  交" style="width:120px" id="btnToPurchase" onclick="inquiryMngJsMng.toPurchase()" />
+                    <input class="button" type="button" value="关  闭" style="width:120px" id="btnClose" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end-->
+
+    <script type="text/javascript" src="../JS/Ctrl/DatePicker/WdatePicker.js"></script> 
+    <script>
+        var inquiryMngJsMng = inquiryMngJsMng || {
+            init: function () {
+                $("#btnNew").click(function () {
+                    inquiryMngJsMng.newInquiry();
+                });
+                var curDate = new Date(),
+                    curMonth = (curDate.getMonth() + 1),
+                    curMonthStr = curMonth > 9 ?curMonth:"0"+curMonth,
+                    curDay = curDate.getDate(),
+                    curDayStr = curDay > 9 ?curDay:"0"+curDay;
+
+                var sDate = curDate.getFullYear() + "-" + curMonthStr + "-01",
+                    eDate = curDate.getFullYear() + "-" + curMonthStr + "-" + curDayStr;
+                $("#txtInquiryDateStart").val(sDate);
+                $("#txtInquiryDateEnd").val(eDate);
+
+                $("#btnSearch").click(function () {
+                    inquiryMngJsMng.loadDataList();
+                });
+            },
+            loadDataList: function () {
+                var inqId = $("#txtInquiryId").val();
+                var inqStartDate = $("#txtInquiryDateStart").val();
+                var inqEndDate = $("#txtInquiryDateEnd").val();
+                var inqState = $("#selState").val();
+                $("#inquiryList").empty();
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        InqId: inqId,
+                        InqStartDate: inqStartDate,
+                        InqEndDate: inqEndDate,
+                        InqState: inqState,
+                    },
+                    postUrl: "/Auth/Auth.svc/GetInquiryList",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (msg.IsSuccess) {
+                                var _dataList = jQuery.parseJSON(msg.Message);
+                                if (typeof (_dataList) != "undefined" && _dataList.length > 0) {
+                                    $.each(_dataList, function (i, item) {
+                                        var trTemp = $.template.render(inquiryMngJsMng.template.tr,
+                                             {
+                                                 InquiryId: item.InquiryId, InquiryDate: item.InquiryDateText,
+                                                 CarBrand: item.CarBrand, CarType: item.CarType, 
+                                                 PartsName: item.PartsName, Quantity: item.Quantity, StateText: item.StateText,
+                                                 Remark: item.Remark, QuotationCount: item.QuotationCount
+                                             })
+                                        $("#inquiryList").append(trTemp);
+                                    });
+                                }
+                            }
+                            else {
+                                if (msg.Code == -1000) {
+                                    alert(msg.Message);
+                                    location.href = "../MaintainFactory/Login.html";
+                                }
+                                else
+                                    alert(msg.Message);
+                            }
+                        }
+                    }
+                });
+            },
+            newInquiry: function () {
+                location.href = "InquiryEdit.html";
+            },
+            modify: function (inqId) {
+                location.href = "InquiryEdit.html?inqId=" + inqId;
+            },
+            popUpToPurchase: function (inqId) {
+                $("#quotationList").empty();
+                $.showPopup("popUp_Purchase", "btnClose");
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        InqId: inqId
+                    },
+                    postUrl: "/Auth/Auth.svc/GetInquiryQuotationList",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (msg.IsSuccess) {
+                                var _dataList = jQuery.parseJSON(msg.Message);
+                                if (typeof (_dataList) != "undefined" && _dataList.length > 0) {
+                                    $.each(_dataList, function (i, item) {
+                                        var checkedState = "";
+                                        if (item.PurchaseId != null && item.PurchaseId > 0) {
+                                            checkedState = "checked='checked'";
+                                            $("#btnToPurchase").hide();
+                                        }
+                                        var trTemp = $.template.render(inquiryMngJsMng.template.quoteTr,
+                                             {
+                                                 InquiryId: item.InquiryId, CarPartsId: item.CarPartsId, Price: item.Price,
+                                                 CarPartsName: item.CarPartsName,QuotationId:item.QuotationId, CheckedState: checkedState
+                                             })
+                                        $("#quotationList").append(trTemp);
+                                    });
+                                }
+                            }
+                            else {
+                                if (msg.Code == -1000) {
+                                    alert(msg.Message);
+                                    location.href = "../MaintainFactory/Login.html";
+                                }
+                                else
+                                    alert(msg.Message);
+                            }
+                        }
+                    }
+                });
+            },
+
+            toPurchase: function () {
+                debugger;
+                var quoteId = 0;
+                var quoteIdObj = $("#quotationList").find("input:checkbox:checked");
+                if (quoteIdObj != null && quoteIdObj.length > 0) {
+                    if (quoteIdObj.length > 1){
+                        alert("不能选择多个报价单");
+                        return;
+                    }
+                    quoteId = quoteIdObj.val();
+                }
+                if (quoteId == 0) {
+                    alert("请选择报价单");
+                    return;
+                }
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        QuoteId: quoteId
+                    },
+                    postUrl: "/Auth/Auth.svc/InquiryToPurchase",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (!msg.IsSuccess)
+                                alert("保存失败！");
+                            else {
+                                alert("保存成功！");
+                                location.href = "InquiryMng.html";
+                            }
+                        }
+                        else
+                            alert("保存失败！");
+                    }
+                });
+            },
+            template: {
+                tr: '<tr>\
+                        <td>${InquiryId}</td>\
+                        <td>${InquiryDate}</td>\
+                        <td>${CarBrand}</td>\
+                        <td>${CarType}</td>\
+                        <td>${PartsName}</td>\
+                        <td>${Quantity}</td>\
+                        <td>${Remark}</td>\
+                        <td>${StateText}</td>\
+                        <td>${QuotationCount}</td>\
+                        <td>\
+                            <a href="javascript:void(0);" onclick="inquiryMngJsMng.modify(${InquiryId});">修改</a>\
+                            <a href="javascript:void(0);" onclick="inquiryMngJsMng.popUpToPurchase(${InquiryId});">转采购</a>\
+                        </td>\
+                    </tr>',
+                quoteTr: '<tr>\
+                        <td>${InquiryId}</td>\
+                        <td><a href="javascript:void(0);" onclick="inquiryMngJsMng.showCarParts(${CarPartsId});">${CarPartsName}</a></td>\
+                        <td>${Price}</td>\
+                        <td><input type="checkbox" name="ToPurchase" value="${QuotationId}" ${CheckedState} /></td>\
+                    </tr>'
+            }
+        };
+        inquiryMngJsMng.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\bin\Debug\LoyalFilial.Framework.Job.WinHost.exe.config
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\bin\Debug\LoyalFilial.Framework.Job.WinHost.exe
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\bin\Debug\LoyalFilial.Framework.Job.WinHost.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\bin\Debug\LoyalFilial.Framework.Job.Domain.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\bin\Debug\LoyalFilial.Framework.Job.Domain.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\obj\Debug\LoyalFilial.Framework.Job.WinHost.csprojResolveAssemblyReference.cache
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\obj\Debug\LoyalFilial.Framework.Job.WinHost.ProjectInstaller.resources
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\obj\Debug\LoyalFilial.Framework.Job.WinHost.csproj.GenerateResource.Cache
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\obj\Debug\LoyalFilial.Framework.Job.WinHost.exe
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Job.WinHost\obj\Debug\LoyalFilial.Framework.Job.WinHost.pdb

@@ -1,0 +1,15 @@
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\RosetteStone.Framework.Cache.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\RosetteStone.Framework.Cache.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\LoyalFilial.Framework.Core.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\LoyalFilial.Framework.Core.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\ServiceStack.Common.xml
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\ServiceStack.Redis.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\ServiceStack.Text.xml
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\obj\Debug\LoyalFilial.Framework.Cache.csprojResolveAssemblyReference.cache
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\obj\Debug\RosetteStone.Framework.Cache.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\obj\Debug\RosetteStone.Framework.Cache.pdb
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\BeITMemcached.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\ServiceStack.Common.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\ServiceStack.Interfaces.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\ServiceStack.Redis.dll
+D:\Work\LoyalFilial\LoyalFilial.Framework\LoyalFilial.Framework.Cache\bin\Debug\ServiceStack.Text.dll

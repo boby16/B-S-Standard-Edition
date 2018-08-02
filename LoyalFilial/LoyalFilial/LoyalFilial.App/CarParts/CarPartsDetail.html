@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>汽配商详情</title>
+    <meta charset="UTF-8">
+    <link href="../Css/Main.css" rel="stylesheet">
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="kvlist" style="border: 1px solid red;">
+        <ul id="ulCarPartsDetail">
+            <li><span class="left">公司：</span><span class="right" id="CarPartsName"></span></li>
+            <li><span class="left">地址：</span><span class="right" id="Address"></span></li>
+            <li><span class="left">电话1：</span><span class="right" id="TelNo1"></span></li>
+            <li><span class="left">电话2：</span><span class="right" id="TelNo2"></span></li>
+            <li><span class="left">电话3：</span><span class="right" id="TelNo3"></span></li>
+            <li><span class="left">传真：</span><span class="right" id="FaxNo"></span></li>
+            <li><span class="left">手机1：</span><span class="right" id="MobileNo1"></span></li>
+            <li><span class="left">手机2：</span><span class="right" id="MobileNo2"></span></li>
+            <li><span class="left">联系人：</span><span class="right" id="ContactName"></span></li>
+            <li><span class="left">联盟：</span><span class="right" id="Alliance"></span></li>
+            <li style="height:auto;"><span class="left" style="vertical-align:top;">主营：</span><span class="right" id="MainServices"></span></li>
+        </ul>
+        <div class="center" style="margin-top:50px;margin-bottom:20px;">
+            <input id="hidCarPartsId" type="hidden" />
+            <input type="button" class="button" style="width:120px" value="收藏" id="btnfavorite" />
+            <input type="button" class="button" value="评论" style="display:none;width:120px;" />
+            <input type="button" class="button" style="width:120px" value="返回" id="btnBack" />
+        </div>
+    </div>
+
+    <script>
+        commonPageJsMng.initJs();
+        var carpartsDetailJsMng = carpartsDetailJsMng || {
+            init: function () {
+                var cpId = commonPageJsMng.GetUrlParms("carPartsId");
+                if (cpId != "" && cpId > 0) {
+                    $("#hidCarPartsId").val(cpId);
+
+                    carpartsDetailJsMng.loadData();
+
+                    $("#btnfavorite").click(function () {
+                        carpartsDetailJsMng.favorite($("#hidCarPartsId").val());
+                    });
+                }
+                else {
+                    alert("参数错误！");
+                    location.href = "../Home/Index.html";
+                }
+                $("#btnBack").click(function () {
+                    window.history.go(-1);
+                });
+
+            },
+            loadData: function () {
+                var searchTxt = $("#hidCarPartsId").val();
+                $("#ulCarPartsDetail").find("li span.right").each(function () {
+                    $(this).html("");
+                });
+                if (typeof (searchTxt) != "undefined") {
+                    $.dataManager.post({
+                        dataJson: {
+                            AccountId: $.cookie.get($.cst.cookie.accountId),
+                            Token: $.cookie.get($.cst.cookie.token),
+                            CarPartsId: searchTxt
+                        },
+                        postUrl: "/Auth/Auth.svc/GetCarPartsDetail",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            debugger;
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (msg.IsSuccess) {
+                                    var _dataCarParts = jQuery.parseJSON(msg.Message);
+                                    if (typeof (_dataCarParts) != "undefined" && _dataCarParts != "null" && _dataCarParts != "") {
+                                        for (var item in _dataCarParts) {
+                                            $("#"+item).html(_dataCarParts[item]);
+                                        }
+                                    }
+                                }
+                                else {
+                                    if (msg.Code == -1000) {
+                                        alert(msg.Message);
+                                        location.href = "../MaintainFactory/Login.html";
+                                    }
+                                    else
+                                        alert(msg.Message);
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+            favorite: function (cpId) {
+                $.dataManager.post({
+                    dataJson: {
+                        AccountId: $.cookie.get($.cst.cookie.accountId),
+                        Token: $.cookie.get($.cst.cookie.token),
+                        TargetId: cpId,
+                    },
+                    postUrl: "/Auth/Auth.svc/FavoriteCarParts",
+                    needLoading: false,
+                    afterFun: function (msg) {
+                        if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                            if (msg.IsSuccess) {
+                                alert("收藏成功！");
+                            }
+                            else {
+                                if (msg.Code == -1000) {
+                                    alert(msg.Message);
+                                    location.href = "../MaintainFactory/Login.html";
+                                }
+                                else
+                                    alert(msg.Message);
+                            }
+                        }
+                    }
+                });
+            },
+        }
+        carpartsDetailJsMng.init();
+    </script>
+</body>
+</html>

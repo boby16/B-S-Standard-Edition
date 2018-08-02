@@ -1,0 +1,86 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>汽修用户登录</title>
+        <meta charset="UTF-8">
+        <link href="../Css/Main.css" rel="stylesheet"> 
+        <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+        <script src="../JS/Common/jquery.md5.js"></script>
+        <script src="../JS/Page/CommonPage.js"></script>
+    </head>
+    <body>
+        <div class="center" style="width:1000px">
+            <script>commonPageJsMng.initHeaderMenu();</script>
+
+            <div class="body">
+                <div class="left" style="float:left;">
+                    <img src="../Images/login_1.png" style="width:500px; height:350px" />
+                </div>
+                <div class="right">
+                    <div class="login">
+                        <div>
+                            <p>汽修厂用户</p>
+                        </div>
+                        <div style="padding-right:30px">
+                            <ul>
+                                <li>
+                                    <span class="left">手机号</span> <br />
+                                    <input class="text" type="text" placeholder="帐号" id="Account" />
+                                </li>
+                                <li>
+                                    <span>密码</span><br />
+                                    <input class="text" type="password" placeholder="密码" id="Password" />
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="cbAutoLogin" />
+                                    <label for="cbAutoLogin">自动登录</label>
+                                </li>
+                            </ul>
+                            <div>
+                                <input type="button" class="button" id="btnLogin" value="登    录" onclick="mfJsMng.login();" />
+                            </div>
+                            <div style="margin-top:20px;">
+                                <p style="font-size:12px;color:red; margin-left:20px; display:none;word-wrap:break-word; width:250px" id="divLoginError"></p>
+                            </div>
+                            <div style="margin-top:20px">
+                                <a href="Register.html" class="link">没有账号，请注册</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>commonPageJsMng.initFooter();</script>
+        </div>
+        <script>
+            var mfJsMng = mfJsMng || {
+                login: function () {
+                    var pwd = $.md5($("#Password").val());
+                    var foreverFlag = $("#cbAutoLogin").is(":checked") ? 1 : 0;
+                    $.dataManager.post({
+                        dataJson: {
+                            accountId: $("#Account").val(), password: pwd, imgAuthCode: "1", deviceCode: "1"
+                        },
+                        postUrl: "/Auth/Auth.svc/Login",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (msg.IsSuccess) {
+                                    $.cookie.set($.cst.cookie.accountId, $("#Account").val(), foreverFlag)
+                                    $.cookie.set($.cst.cookie.userType, 1, foreverFlag)
+                                    $.cookie.set($.cst.cookie.token, msg.Message, foreverFlag)
+                                    location.href = "../Home/Index.html";
+                                }
+                                else {
+                                    $("#divLoginError").html(msg.Message);
+                                    $("#divLoginError").show();
+                                }
+                            }
+                        }
+                    });
+                }
+            };
+        </script>
+    </body>
+</html>

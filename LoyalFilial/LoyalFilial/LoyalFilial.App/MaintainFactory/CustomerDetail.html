@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>客户信息查看</title>
+    <meta charset="UTF-8">
+    <link href="../Css/Main.css" rel="stylesheet">
+    <script src="../JS/Common/Jquery-1.10.2.min.js"></script>
+    <script src="../JS/Page/CommonPage.js"></script>
+</head>
+<body>
+    <div class="kvlist" style="border: 1px solid red;">
+        <ul id="ulCustomer">
+            <li><span class="left">车主姓名：</span><span class="right" id="CustormerName"></span></li>
+            <li><span class="left">手机：</span><span class="right" id="MobileNo"></span></li>
+            <li><span class="left">生日：</span><span class="right" id="BirthDayText"></span></li>
+            <li><span class="left">住址：</span><span class="right" id="Address"></span></li>
+            <li><span class="left">品牌：</span><span class="right" id="CarBrand"></span></li>
+            <li><span class="left">车型：</span><span class="right" id="CarType"></span></li>
+            <li><span class="left">车牌号：</span><span class="right" id="PlateNO"></span></li>
+            <li><span class="left">车架号：</span><span class="right" id="VIN"></span></li>
+            <li><span class="left">客户类型：</span><span class="right" id="StateText"></span></li>
+            <li><span class="left">备注：</span><span class="right" id="Remark">其他备注。。。</span></li>
+        </ul>
+        <div class="center" style="margin-top:50px;margin-bottom:20px;">
+            <input type="hidden" id="hidMFCustomerId" />
+            <input type="button" class="button" style="width:120px" value="返回" id="btnBack"/>
+        </div>
+    </div>
+
+    <script>
+        commonPageJsMng.initJs();
+        var customerDetailJsMng = customerDetailJsMng || {
+            init: function () {
+                var cId = commonPageJsMng.GetUrlParms("cId");
+                if (cId != "" && cId > 0) {
+                    $("#hidMFCustomerId").val(cId);
+
+                    customerDetailJsMng.loadData();
+                }
+                else {
+                    alert("参数错误！");
+                    location.href = "CustomerMng.html";
+                }
+                $("#btnBack").click(function () {
+                    location.href = "CustomerMng.html";
+                });
+
+            },
+            loadData: function () {
+                var searchTxt = $("#hidMFCustomerId").val();
+                $("#ulCustomer").find("li span.right").each(function () {
+                    $(this).html("");
+                });
+                if (typeof (searchTxt) != "undefined") {
+                    $.dataManager.post({
+                        dataJson: {
+                            AccountId: $.cookie.get($.cst.cookie.accountId),
+                            Token: $.cookie.get($.cst.cookie.token),
+                            CId: searchTxt
+                        },
+                        postUrl: "/Auth/Auth.svc/GetMFCustomerDetail",
+                        needLoading: false,
+                        afterFun: function (msg) {
+                            if (msg != null && msg != "null" && typeof (msg) != "undefined") {
+                                if (msg.IsSuccess) {
+                                    var _dataDetail = jQuery.parseJSON(msg.Message);
+                                    if (typeof (_dataDetail) != "undefined" && _dataDetail != "null" && _dataDetail != "") {
+                                        for (var item in _dataDetail) {
+                                            if (_dataDetail[item] != "null")
+                                                $("#" + item).html(_dataDetail[item]);
+                                        }
+                                    }
+                                }
+                                else {
+                                    if (msg.Code == -1000) {
+                                        alert(msg.Message);
+                                        location.href = "../MaintainFactory/Login.html";
+                                    }
+                                    else
+                                        alert(msg.Message);
+                                }
+                            }
+                        }
+                    });
+                }
+            },
+        }
+        customerDetailJsMng.init();
+    </script>
+</body>
+</html>
